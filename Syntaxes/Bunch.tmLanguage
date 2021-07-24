@@ -17,59 +17,61 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#delay</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#comments</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#app</string>
+			<string>#hideall</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#hideall</string>
+			<string>#app</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
 		<key>app</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>(!{1,3})?([|@%]*)(?=[\w@])</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.variable.negation.bunch</string>
+					<string>keyword.operator.negation.bunch</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.variable.modifier.bunch</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.app.bunch</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.variable.modifier.bunch</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.delay.bunch</string>
+					<string>keyword.operator.modifier.bunch</string>
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>match an application and its modifiers, \w catches the _ after an app</string>
-			<key>match</key>
-			<string>(!{1,3})?([|@%]*)\w+(_?)(\s~\d+)?</string>
-			<key>name</key>
-			<string>entity.name.function.app.bunch</string>
+			<string>match an application and its modifiers</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>[_]?</string>
+					<key>name</key>
+					<string>keyword.operator.modifier.bunch</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#delay</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>we have look forwards here to not match the delay or comments at the end of a line</string>
+					<key>match</key>
+					<string>(.*?)\s*(?=[_~#?]|//|$)</string>
+					<key>name</key>
+					<string>entity.name.function.app.bunch</string>
+				</dict>
+			</array>
 		</dict>
 		<key>comments</key>
 		<dict>
@@ -173,7 +175,7 @@
 					<key>match</key>
 					<string>~\d+</string>
 					<key>name</key>
-					<string>punctuation.definition.delay.bunch</string>
+					<string>keyword.operator.delay.bunch</string>
 				</dict>
 			</array>
 		</dict>
@@ -183,9 +185,9 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>^\s*@@\s$</string>
+					<string>^@@</string>
 					<key>name</key>
-					<string></string>
+					<string>keyword.operator.hideall.bunch</string>
 				</dict>
 			</array>
 		</dict>
