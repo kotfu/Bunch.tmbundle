@@ -1,0 +1,117 @@
+---
+title: Documentation
+shortcut: d
+open at: 10am
+frontvar: Some new value
+srcdir: ~/src/myproject
+varfromscript: $ echo thevalue
+website: https://bunchapp.co
+onoff: off
+---
+
+/*
+https://bunchapp.co/docs/bunch-files/frontmatter/
+
+YAML-ish keys and values. Can contain commands and variable
+assignments
+*/
+
+# Comments start with `#` or `//` and a space
+// blank lines are ignored
+
+/* 
+Comments can also use a block syntax 
+for multi-line comments 
+*/
+
+/*
+
+https://bunchapp.co/docs/bunch-files/variables
+
+Variables can be assigned in front matter, or passed into snippets, or
+passed in via the URL handler
+
+Variables can be used nearly anywhere
+*/
+${website}
+%{urlencoded}
+${srcdir/raw}
+
+# Hide all visible apps (use at top of bunch)
+@@
+
+/* Apps to launch start at the beginning of a line, no
+need to quote or escape. */
+Messages ~5
+
+# Apps launched by a Bunch can be quit when the Bunch is closed
+// Add a percent symbol to ignore it when quitting (keep it running)
+%Terminal
+
+# Start a line with @ to "focus" that app (hide others)
+# Focus commands should be the last item in the Bunch
+@Copy 'Em_ ~5
+
+# Start a line with an exclamation point to quit that app if it's running
+!!Mail ~5
+
+/* Include a line starting with a dash to open specific
+   files in the app.
+   If the first file listed is "XX", all open windows
+   for the app will be closed first */
+Finder
+- XX
+- ${srcdir}
+- ~/Documents
+
+/* 
+https://bunchapp.co/docs/bunch-files/commands/
+
+commands are enclosed in parenthesis
+
+! prefix runs only when closing a bunch
+% prefix avoids reversing when closing a bunch
+
+*/
+(hide desktop)
+(${showhide} desktop)
+!(do not disturb ${onoff/raw} ${onoff})
+%(show dock)
+
+/*
+https://bunchapp.co/docs/bunch-files/opening-web-pages/
+
+Use a URL at the beginning of a line to open it in your
+default browser. URL schemes also work.
+
+Prefix with a browser name and a colon to open in a specific browser
+
+*/
+
+x-marked://open?file=filename.md
+https://brettterpstra.com/projects
+brave:https://www.kotfu.net
+
+/*
+https://bunchapp.co/docs/bunch-files/scripts/
+https://bunchapp.co/docs/bunch-files/run-on-close/
+
+Lines starting with * run applescript inline or from a file
+Lines starting with & run Automator Workflows
+Lines starting with $ run shell scripts
+
+Script lines beginning with ! are run on close
+*/
+* say "Bunch launched"
+* "Run This.scpt" "argument 1" "argument 2"
+!* say "Bunch closed"
+& ~/Dropbox/MyWorkflow.workflow
+!& Bunch Workflow
+& WorkflowWithVariables
+- variable1 = contents
+$ say "I'm a shell command!"
+!$ my\ script.sh arg1 "argument 2"
+# shell script with a variable as an argument and environment variables
+$ /usr/local/scripts/myscript.sh ${srcdir} arg2
+- KEY=value
+
