@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>xbgsh@xbgsh.arg</string>
+	<key>contactName</key>
+	<string>Kotfu</string>
+	<key>description</key>
+	<string>A TextMate bundle for Bunch (https://bunchapp.co) on macOS.
+</string>
+	<key>name</key>
+	<string>Bunch</string>
+	<key>uuid</key>
+	<string>27CC839B-1A93-42DA-96AF-DE1870929B2A</string>
+</dict>
+</plist>
