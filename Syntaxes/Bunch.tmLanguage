@@ -31,6 +31,10 @@
 			<key>include</key>
 			<string>#frontmatter</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#command</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -80,6 +84,44 @@
 					<string>#comments</string>
 				</dict>
 			</array>
+		</dict>
+		<key>command</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*([%!]?)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.bunch</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.parens.begin.bunch</string>
+				</dict>
+			</dict>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.command.bunch</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>match commands like (dark mode off)</string>
+			<key>end</key>
+			<string>(\))\s*$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.parens.end.bunch</string>
+				</dict>
+			</dict>
 		</dict>
 		<key>comments</key>
 		<dict>
