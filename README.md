@@ -37,3 +37,4 @@ Reference material for customizing and creating bundles:
 * [TextMate Language Grammars](https://macromates.com/manual/en/language_grammars)
 * [Regex Reference](https://macromates.com/manual/en/regular_expressions)
 * [Bunch File Syntax Reference](https://bunchapp.co/docs/bunch-files/quick-reference/)
+* [TextMate Bundle Lessons Learned](https://www.apeth.com/nonblog/stories/textmatebundle.html)
