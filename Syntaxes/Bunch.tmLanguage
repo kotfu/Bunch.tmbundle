@@ -35,6 +35,10 @@
 			<key>include</key>
 			<string>#command</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#script</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -297,6 +301,29 @@
 					<string>^@@</string>
 					<key>name</key>
 					<string>keyword.operator.hideall.bunch</string>
+				</dict>
+			</array>
+		</dict>
+		<key>script</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.script.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^([*$&amp;])\s+(.*?)$</string>
 				</dict>
 			</array>
 		</dict>
