@@ -22,8 +22,9 @@ This bundle includes:
   [download](https://macromates.com/download) and install it
 - Click the Green "Code" button above, and then click on "Download ZIP"
 - After the file had downloaded, open Finder and find the downloaded file
-- You may have to double click the file to unzip it.
-- Double-click the "Bunch.tmbundle" file to install it in TextMate
+- You may have to double click the file to unzip it
+- Rename the `Bunch.tmbundle-main` directory to `Bunch.tmbundle`
+- Double-click the `Bunch.tmbundle` file to install it in TextMate
 
 TextMate won't automatically keep this bundle updated for you. Update the bundle
 by following the installation steps.
