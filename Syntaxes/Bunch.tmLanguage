@@ -27,6 +27,10 @@
 			<key>include</key>
 			<string>#app</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#frontmatter</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
@@ -55,7 +59,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>[_]?</string>
+					<string>_</string>
 					<key>name</key>
 					<string>keyword.operator.modifier.bunch</string>
 				</dict>
@@ -70,6 +74,10 @@
 					<string>(.*?)\s*(?=[_~#?]|//|$)</string>
 					<key>name</key>
 					<string>entity.name.function.app.bunch</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
 				</dict>
 			</array>
 		</dict>
@@ -176,6 +184,65 @@
 					<string>~\d+</string>
 					<key>name</key>
 					<string>keyword.operator.delay.bunch</string>
+				</dict>
+			</array>
+		</dict>
+		<key>frontmatter</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>^(---)\s*$</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.frontmatter.bunch</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>^(---)\s*$</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.frontmatter.bunch</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.frontmatter.bunch</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.key.frontmatter.bunch</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.assignment</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.bunch</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>^(\S[\w ]+)(:)\s*(.*?)$</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
