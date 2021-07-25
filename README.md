@@ -29,7 +29,6 @@ This bundle includes:
 TextMate won't automatically keep this bundle updated for you. Update the bundle
 by following the installation steps.
 
-
 ## Customize the Theme
 
 You can create your own customzed theme to be used for Bunch files. Here's a list
@@ -40,6 +39,12 @@ set or change the visual attributes of any scope in the grammer in your theme.
 - Apps, Files, and URLS = entity.name.function...
 - ! and @ operators = keyword.operator...
 - Comments = comment.line... and comment.block...
+
+
+## Clarificaitons
+
+- are (delay 15) and (pause 15) synonyms? https://bunchapp.co/docs/bunch-files/delay/
+  makes it seem like yes, but it isn't explicit. We have assumed they are.
 
 
 ## For Bundle Developers
