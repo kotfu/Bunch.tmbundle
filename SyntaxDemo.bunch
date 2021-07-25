@@ -181,7 +181,8 @@ Script lines beginning with ! are run on close
 # shell scripts can have a display command at the end
 # and a pipe to run them in parallel
 |$ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d)
-|!$ my\ script.sh arg1 "argument 2" (display)
+# delay after display, i.e. voice says "hello 3" after waiting 2 seconds
+|!$ say hello ~3 (display) ~2
 # shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}

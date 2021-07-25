@@ -37,7 +37,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#app</string>
+			<string>#appurl</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -54,7 +54,7 @@
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>app</key>
+		<key>appurl</key>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -522,7 +522,7 @@
 					<key>comment</key>
 					<string>the multiple variations of script lines</string>
 					<key>match</key>
-					<string>^([|!]*)?([*$&amp;])\s+(.*?)(\s~\d+)?(\(display(?!\w).*\))?$</string>
+					<string>^([|!]*)?([*$&amp;])\s+(.*?)(\(display(?!\w).*\))?(\s~\d+)?$</string>
 				</dict>
 			</array>
 		</dict>
@@ -564,15 +564,23 @@
 					<key>comment</key>
 					<string>match the lines that insert or call a snippet</string>
 					<key>match</key>
-					<string>^(\s{4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)(\s~\d+)?$</string>
+					<string>^( {4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)(\s~\d+)?$</string>
 				</dict>
 				<dict>
 					<key>comment</key>
-					<string>the market that separates embedded snippets from the rest of the file</string>
+					<string>the marker that separates embedded snippets from the rest of the file</string>
 					<key>match</key>
 					<string>^___$</string>
 					<key>name</key>
 					<string>keyword.operator.startembeddedsnippet.bunch</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>Section headers and markers</string>
+					<key>match</key>
+					<string>^(-{2,}|\#{1,}|={1,}|&gt;{1,})\[\w+.*$</string>
+					<key>name</key>
+					<string>entity.name.section</string>
 				</dict>
 			</array>
 		</dict>
