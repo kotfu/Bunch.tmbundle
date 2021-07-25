@@ -70,7 +70,8 @@ Messages
 @Copy 'Em ~5
 
 # attempt to hide app after launching
-TextMate_
+# pipe to ask for parallel execution
+|TextMate_
 
 # force forground and unhide
 Visual Studio Code^
@@ -112,6 +113,11 @@ Finder
 Default
 - ~/tmp/Somefile.txt
 - ~/Documents/Other file.pages  // with comment at end
+# you can also use spotlight here
+# https://bunchapp.co/docs/bunch-files/spotlight-searches/
+- #Taxes #2020 [~/Dropbox/Receipts] !25
+- 'kind:"affinity photo" tag:brettterpstra.com name:template' [~/Dropbox] !5
+
 
 /*
 https://bunchapp.co/docs/bunch-files/opening-web-pages/
@@ -128,13 +134,26 @@ x-marked://open?file=${srcdir}/file_name.md
 https://brettterpstra.com/projects
 brave:https://www.kotfu.net  # specify which browser to use
 
+/*
+https://bunchapp.co/docs/bunch-files/keystrokes/
+
+keystrokes are file lines surrounded by braces
+typed strings are file lines surrounded by brackets
+*/
+Messages
+- {@N "typing with a\\!2 pause"}
+- (pause 3)
+- [Mom tab Hi Mom! return \\!5${longermessage/typed} return]
+
+
 /* 
 https://bunchapp.co/docs/bunch-files/commands/
 
 Commands are enclosed in parenthesis and can have variables
 */
 (hide desktop)
-(${showhide} desktop)
+# pipe to request parallel execution
+|(${showhide} desktop)
 # ! prefix means only run this when closing the bunch
 !(do not disturb ${onoff/raw} ${onoff}) // comments
 # avoid reversing action when closing the bunch
@@ -160,8 +179,9 @@ Script lines beginning with ! are run on close
 & WorkflowWithVariables
 - variable1 = contents with = sign
 # shell scripts can have a display command at the end
-$ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d)
-!$ my\ script.sh arg1 "argument 2" (display)
+# and a pipe to run them in parallel
+|$ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d)
+|!$ my\ script.sh arg1 "argument 2" (display)
 # shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}
@@ -177,6 +197,9 @@ https://bunchapp.co/docs/bunch-files/snippets/
 !<${snipvar}#${section}
 # a snippet that waits for all the other apps to load before running
     <waiting.snippet#Position
+# bunches as snippets
+<Comms.bunch ~5
+
 # start marker for an embedded snippet
 ___
 // these should all be section headers, have to have at least 2 dashes

@@ -161,7 +161,7 @@
 			<key>comment</key>
 			<string>match commands like (dark mode off)</string>
 			<key>match</key>
-			<string>^([%!]?)(\()(.*)(\))</string>
+			<string>^([|%!]*)(\()(.*)(\))</string>
 		</dict>
 		<key>comments</key>
 		<dict>
@@ -184,7 +184,7 @@
 					<key>comment</key>
 					<string>comments starting with #</string>
 					<key>match</key>
-					<string>(^|\s+)(\#.*)$</string>
+					<string>(^|\s+)(\#\s.*)$</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -230,6 +230,8 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>comment</key>
+					<string>delay operator at the end of script and app lines</string>
 					<key>match</key>
 					<string>~\d+</string>
 					<key>name</key>
@@ -267,6 +269,76 @@
 							<string>\((pause|delay) \d+\)</string>
 							<key>name</key>
 							<string>storage.type.function</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.bunch</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.bunch</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#typepause</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#variable</string>
+										</dict>
+									</array>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.bunch</string>
+								</dict>
+							</dict>
+							<key>comment</key>
+							<string>keystrokes are surrounded by braces</string>
+							<key>match</key>
+							<string>(\{)(.*)(\})</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.bunch</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.bunch</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#typepause</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#variable</string>
+										</dict>
+									</array>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.bunch</string>
+								</dict>
+							</dict>
+							<key>comment</key>
+							<string>text to type into the app is surrounded by brackets</string>
+							<key>match</key>
+							<string>(\[)(.*)(\])</string>
 						</dict>
 						<dict>
 							<key>captures</key>
@@ -314,6 +386,8 @@
 					</array>
 				</dict>
 			</dict>
+			<key>comment</key>
+			<string>files and file like lines that start with a -</string>
 			<key>match</key>
 			<string>^(-&gt;?)\s(.*)</string>
 		</dict>
@@ -332,6 +406,8 @@
 							<string>keyword.operator.frontmatter.bunch</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>YAML-ish front matter at the top of the file</string>
 					<key>end</key>
 					<string>^(---)\s*$</string>
 					<key>endCaptures</key>
@@ -356,6 +432,8 @@
 									<key>patterns</key>
 									<array>
 										<dict>
+											<key>comment</key>
+											<string>certain keywords cause bunch to take actions, instead of defining a variable</string>
 											<key>match</key>
 											<string>(close after|close at|close on|from file|from script|ignores state|menu divider|menu order|only opens|open at|open every|open on|quits apps|run after|run after close|run before|run before close|schedule if|schedule unless|sequence|shortcut|single bunch mode|startup|title|toggles)</string>
 											<key>name</key>
@@ -374,6 +452,8 @@
 									<string>string.quoted.single.bunch</string>
 								</dict>
 							</dict>
+							<key>comment</key>
+							<string>match "keyword: value" lines</string>
 							<key>match</key>
 							<string>^(\S[\w ]+)(:)\s*(.*?)$</string>
 						</dict>
@@ -390,6 +470,8 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>comment</key>
+					<string>special command to hide all windows</string>
 					<key>match</key>
 					<string>^@@</string>
 					<key>name</key>
@@ -437,8 +519,10 @@
 							<string>storage.type.function</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>the multiple variations of script lines</string>
 					<key>match</key>
-					<string>^(!)?([*$&amp;])\s+(.*?)(\s~\d+)?(\(display(?!\w).*\))?$</string>
+					<string>^([|!]*)?([*$&amp;])\s+(.*?)(\s~\d+)?(\(display(?!\w).*\))?$</string>
 				</dict>
 			</array>
 		</dict>
@@ -477,10 +561,14 @@
 							<string>keyword.operator.delay.bunch</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>match the lines that insert or call a snippet</string>
 					<key>match</key>
 					<string>^(\s{4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)(\s~\d+)?$</string>
 				</dict>
 				<dict>
+					<key>comment</key>
+					<string>the market that separates embedded snippets from the rest of the file</string>
 					<key>match</key>
 					<string>^___$</string>
 					<key>name</key>
@@ -503,6 +591,20 @@
 					<string>'(.*?)'</string>
 					<key>name</key>
 					<string>string.quoted.single.bunch</string>
+				</dict>
+			</array>
+		</dict>
+		<key>typepause</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>pause sequence in typed strings</string>
+					<key>match</key>
+					<string>\\\\!\d+</string>
+					<key>name</key>
+					<string>keyword.operator.bunch</string>
 				</dict>
 			</array>
 		</dict>
@@ -539,6 +641,8 @@
 							<string>variable.language</string>
 						</dict>
 					</dict>
+					<key>comment</key>
+					<string>variable references with their various incantations and transformations</string>
 					<key>match</key>
 					<string>([\$%]\{)(\w+)((/)(url|shell|raw|typed))?(\})</string>
 				</dict>
