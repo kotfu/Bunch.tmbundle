@@ -109,22 +109,19 @@ Prefix with a browser name and a colon to open in a specific browser
 */
 
 x-marked://open?file=${srcdir}/file_name.md
-https://brettterpstra.com/projects   //comment here too
-# specify which browser to use
-brave:https://www.kotfu.net
+https://brettterpstra.com/projects
+brave:https://www.kotfu.net  # specify which browser to use
 
 /* 
 https://bunchapp.co/docs/bunch-files/commands/
 
-Commands are enclosed in parenthesis
-
-! prefix runs only when closing a bunch
-% prefix avoids reversing when closing a bunch
-
+Commands are enclosed in parenthesis and can have variables
 */
 (hide desktop)
 (${showhide} desktop)
+# ! prefix means only run this when closing the bunch
 !(do not disturb ${onoff/raw} ${onoff}) // comments
+# avoid reversing action when closing the bunch
 %(show dock)
 
 
@@ -143,11 +140,11 @@ Script lines beginning with ! are run on close
 !* say "Bunch closed"
 & ~/Dropbox/MyWorkflow.workflow
 !& Bunch Workflow
+# Automator workflows can take variables
 & WorkflowWithVariables
-- variable1 = contents
+- variable1 = contents with = sign
 $ say "I'm a shell command!"
 !$ my\ script.sh arg1 "argument 2"
-# shell script with a variable as an argument and environment variables
+# shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
-- KEY=value
-
+- ENV_VAR=with variable interpolation ${variable1}

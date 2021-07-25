@@ -146,10 +146,6 @@
 							<key>include</key>
 							<string>#variable</string>
 						</dict>
-						<dict>
-							<key>include</key>
-							<string>#comments</string>
-						</dict>
 					</array>
 				</dict>
 				<key>4</key>
@@ -269,6 +265,41 @@
 							<string>storage.type.function</string>
 						</dict>
 						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.parameter</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.bunch</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.bunch</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#variable</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#comments</string>
+										</dict>
+									</array>
+								</dict>
+							</dict>
+							<key>comment</key>
+							<string>files can look like variable assignments for scripts</string>
+							<key>match</key>
+							<string>(\w+)\s?(=)\s?(.*)</string>
+						</dict>
+						<dict>
 							<key>include</key>
 							<string>#variable</string>
 						</dict>
@@ -383,6 +414,13 @@
 						<dict>
 							<key>name</key>
 							<string>string.quoted.single.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+							</array>
 						</dict>
 					</dict>
 					<key>match</key>
