@@ -75,14 +75,27 @@ TextMate_
 # force forground and unhide
 Visual Studio Code^
 
-# Start a line with an exclamation point to quit that app if it's running
-!Mail
+/*
+https://bunchapp.co/docs/bunch-files/run-on-close/
+*/
+
+# Start a line with an exclamation point to quit that app when
+# starting the bunch
+!Twitter
+# and restart it when closing the bunch
+!!Twitter
+# 3 bangs quits an app when closing the bunch, even if the bunch didn't
+# start the app
+!!!Twitter
+
 
 Tower
 # open files by starting a line with a -
 - ${srcdir}/myproj
 - (pause 5)  // wait 5 seconds before opening next file
 - ${srcdir}/anotherproj
+- (delay 5)  // delay is a synonym for pause
+- ${srcdir}/thirdproj
 
 Finder
 # XX is a special command for tell the app to close all windows
@@ -90,11 +103,9 @@ Finder
 - ~/
 -> ${srcdir}/docs  # open in another tab, only works for Finder
 - ~/Documents
-# triple bang finder to close it (all other apps only require one bang)
-!!!Finder
 
 # Default is a special app, so it gets special treatment
-Default # comment
+Default
 - ~/tmp/Somefile.txt
 - ~/Documents/Other file.pages  // with comment at end
 
@@ -105,8 +116,9 @@ Use a URL at the beginning of a line to open it in your
 default browser. URL schemes also work.
 
 Prefix with a browser name and a colon to open in a specific browser
-
 */
+Safari
+- https://www.duckduckgo.com
 
 x-marked://open?file=${srcdir}/file_name.md
 https://brettterpstra.com/projects
@@ -136,15 +148,16 @@ Lines starting with $ run shell scripts
 Script lines beginning with ! are run on close
 */
 * say "Bunch launched"
-* "Run This.scpt" "argument 1" "argument 2"
+* "Run This.scpt" "argument 1" "argument 2" ~5
 !* say "Bunch closed"
 & ~/Dropbox/MyWorkflow.workflow
 !& Bunch Workflow
 # Automator workflows can take variables
 & WorkflowWithVariables
 - variable1 = contents with = sign
-$ say "I'm a shell command!"
-!$ my\ script.sh arg1 "argument 2"
+# shell scripts can have a display command at the end
+$ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d)
+!$ my\ script.sh arg1 "argument 2" (display)
 # shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}

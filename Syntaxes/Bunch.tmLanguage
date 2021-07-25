@@ -260,7 +260,7 @@
 							<key>comment</key>
 							<string>a special command only available on a file line</string>
 							<key>match</key>
-							<string>\(pause \d+\)</string>
+							<string>\((pause|delay) \d+\)</string>
 							<key>name</key>
 							<string>storage.type.function</string>
 						</dict>
@@ -422,9 +422,19 @@
 								</dict>
 							</array>
 						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function</string>
+						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(!)?([*$&amp;])\s+(.*?)$</string>
+					<string>^(!)?([*$&amp;])\s+(.*?)(\s~\d+)?(\(display(?!\w).*\))?$</string>
 				</dict>
 			</array>
 		</dict>
