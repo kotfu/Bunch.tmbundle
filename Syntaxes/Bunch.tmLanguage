@@ -85,7 +85,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.browser.bunch</string>
+							<string>keyword.other.browser.bunch</string>
 						</dict>
 						<key>3</key>
 						<dict>
@@ -112,7 +112,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.parens.begin.bunch</string>
+					<string>storage.type.function</string>
 				</dict>
 				<key>3</key>
 				<dict>
@@ -129,7 +129,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.parens.end.bunch</string>
+					<string>storage.type.function</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -278,7 +278,16 @@
 								<key>1</key>
 								<dict>
 									<key>name</key>
-									<string>variable</string>
+									<string>variable.parameter</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>match</key>
+											<string>(close after|close at|close on|from file|from script|ignores state|menu divider|menu order|only opens|open at|open every|open on|quits apps|run after|run after close|run before|run before close|schedule if|schedule unless|sequence|shortcut|single bunch mode|startup|title|toggles)</string>
+											<key>name</key>
+											<string>storage.type.function</string>
+										</dict>
+									</array>
 								</dict>
 								<key>2</key>
 								<dict>
@@ -370,17 +379,17 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.section.brace.begin.bunch</string>
+							<string>variable.language</string>
 						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>variable.other</string>
+							<string>variable.parameter</string>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.transform.bunch</string>
+							<string>keyword.other</string>
 						</dict>
 						<key>5</key>
 						<dict>
@@ -390,7 +399,7 @@
 						<key>6</key>
 						<dict>
 							<key>name</key>
-							<string>punctuation.section.brace.end.bunch</string>
+							<string>variable.language</string>
 						</dict>
 					</dict>
 					<key>match</key>
