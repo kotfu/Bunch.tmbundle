@@ -88,6 +88,10 @@ https://bunchapp.co/docs/bunch-files/run-on-close/
 # start the app
 !!!Twitter
 
+# open another bunch
+SomeOther.bunch
+# with frontmatter variables
+- sequence=true 
 
 Tower
 # open files by starting a line with a -
@@ -161,3 +165,27 @@ $ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a
 # shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}
+
+/*
+https://bunchapp.co/docs/bunch-files/snippets/
+
+*/
+<snippet#Section Name
+- withvariable = thevalue
+<<#embedded ~5
+# snippet composed of variables
+!<${snipvar}#${section}
+# a snippet that waits for all the other apps to load before running
+    <waiting.snippet#Position
+# start marker for an embedded snippet
+___
+// these should all be section headers, have to have at least 2 dashes
+###[Section]
+#[Section]#########
+-------[Section]-----------
+--[Section]
+------------------------------------------[Section]--
+>>>[Section]
+=[Section]== Add a comment, if you like
+>-=# [Section] #=-<
+

@@ -33,6 +33,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#snippet</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#app</string>
 		</dict>
 		<dict>
@@ -435,6 +439,52 @@
 					</dict>
 					<key>match</key>
 					<string>^(!)?([*$&amp;])\s+(.*?)(\s~\d+)?(\(display(?!\w).*\))?$</string>
+				</dict>
+			</array>
+		</dict>
+		<key>snippet</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.script.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.section</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.section</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+							</array>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>^(\s{4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)(\s~\d+)?$</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>^___$</string>
+					<key>name</key>
+					<string>keyword.operator.startembeddedsnippet.bunch</string>
 				</dict>
 			</array>
 		</dict>
