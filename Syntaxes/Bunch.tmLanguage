@@ -25,6 +25,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#frontmatter</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#hideall</string>
 		</dict>
 		<dict>
@@ -33,7 +37,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#frontmatter</string>
+			<string>#file</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -48,9 +52,7 @@
 	<dict>
 		<key>app</key>
 		<dict>
-			<key>begin</key>
-			<string>^(!{1,3})?([|@%]*)(?=[\w@])</string>
-			<key>beginCaptures</key>
+			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -62,43 +64,63 @@
 					<key>name</key>
 					<string>keyword.operator.modifier.bunch</string>
 				</dict>
-			</dict>
-			<key>comment</key>
-			<string>match applications, modifiers, and urls</string>
-			<key>end</key>
-			<string>$</string>
-			<key>patterns</key>
-			<array>
+				<key>3</key>
 				<dict>
-					<key>match</key>
-					<string>_</string>
 					<key>name</key>
-					<string>keyword.operator.modifier.bunch</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#delay</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
+					<string>entity.name.function.app.bunch</string>
+					<key>patterns</key>
+					<array>
 						<dict>
+							<key>comment</key>
+							<string>Default is a special app name</string>
+							<key>match</key>
+							<string>Default(?=(\s|$))</string>
+							<key>name</key>
+							<string>storage.modifier.default.bunch</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>_ attempt to hide app after launching</string>
+							<key>match</key>
+							<string>_(?=(\s|$))</string>
+							<key>name</key>
+							<string>keyword.operator.modifier.bunch</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>^ forces app to foreground and unhide</string>
+							<key>match</key>
+							<string>\^(?=(\s|$))</string>
+							<key>name</key>
+							<string>keyword.operator.modifier.bunch</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>look for specific browsers for urls</string>
+							<key>match</key>
+							<string>(brave|chrome|edge|firefox|opera|safari|tor|vivaldi):</string>
 							<key>name</key>
 							<string>keyword.other.browser.bunch</string>
 						</dict>
-						<key>3</key>
 						<dict>
-							<key>name</key>
-							<string>entity.name.function.app.bunch</string>
+							<key>include</key>
+							<string>#delay</string>
 						</dict>
-					</dict>
-					<key>comment</key>
-					<string>we have look forwards here to not match the delay</string>
-					<key>match</key>
-					<string>((brave|chrome|edge|firefox|opera|safari|tor|vivaldi):)?(.*?)\s*(?=[_~]|$)</string>
+						<dict>
+							<key>include</key>
+							<string>#variable</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+					</array>
 				</dict>
-			</array>
+			</dict>
+			<key>comment</key>
+			<string>match applications with modifiers, and urls</string>
+			<key>match</key>
+			<string>^(!{1,3})?([|@%]*)(\w.*)$</string>
 		</dict>
 		<key>command</key>
 		<dict>
@@ -124,6 +146,10 @@
 							<key>include</key>
 							<string>#variable</string>
 						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
 					</array>
 				</dict>
 				<key>4</key>
@@ -142,74 +168,42 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>(^[ \t]+)?(?&lt;!\S)(?=#)(?!#\{)</string>
-					<key>beginCaptures</key>
+					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.whitespace.comment.leading.bunch</string>
 						</dict>
-					</dict>
-					<key>comment</key>
-					<string>match comments starting with #</string>
-					<key>end</key>
-					<string>(?!\G)</string>
-					<key>patterns</key>
-					<array>
+						<key>2</key>
 						<dict>
-							<key>begin</key>
-							<string>#</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.comment.bunch</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>\n</string>
 							<key>name</key>
 							<string>comment.line.number-sign.bunch</string>
 						</dict>
-					</array>
+					</dict>
+					<key>comment</key>
+					<string>comments starting with #</string>
+					<key>match</key>
+					<string>(^|\s+)(\#.*)$</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(^[ \t]+)?(?&lt;!\S)(?=//)(?!//\{)</string>
-					<key>beginCaptures</key>
+					<key>captures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.whitespace.comment.leading.bunch</string>
 						</dict>
-					</dict>
-					<key>comment</key>
-					<string>match comments starting with //</string>
-					<key>end</key>
-					<string>(?!\G)</string>
-					<key>patterns</key>
-					<array>
+						<key>2</key>
 						<dict>
-							<key>begin</key>
-							<string>//</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.definition.comment.bunch</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>\n</string>
 							<key>name</key>
 							<string>comment.line.double-slash.bunch</string>
 						</dict>
-					</array>
+					</dict>
+					<key>comment</key>
+					<string>comments starting with //</string>
+					<key>match</key>
+					<string>(^|\s+)(//.*)$</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -242,6 +236,51 @@
 					<string>keyword.operator.delay.bunch</string>
 				</dict>
 			</array>
+		</dict>
+		<key>file</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.file.bunch</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>comment</key>
+							<string>close all windows in the app</string>
+							<key>match</key>
+							<string>XX(?=(\s|$))</string>
+							<key>name</key>
+							<string>storage.modifier.default.bunch</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>a special command only available on a file line</string>
+							<key>match</key>
+							<string>\(pause \d+\)</string>
+							<key>name</key>
+							<string>storage.type.function</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#variable</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^(-&gt;?)\s(.*)</string>
 		</dict>
 		<key>frontmatter</key>
 		<dict>

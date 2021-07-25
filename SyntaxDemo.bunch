@@ -1,7 +1,9 @@
 ---
+# certain front matter keys are well known and cause bunch to do stuff
 title: Documentation
 shortcut: d
 open at: 10am
+# all other keys assign variables
 frontvar: Some new value
 srcdir: ~/src/myproject
 varfromscript: $ echo thevalue
@@ -16,13 +18,22 @@ YAML-ish keys and values. Can contain commands and variable
 assignments
 */
 
-# Comments start with `#` or `//` and a space
-// blank lines are ignored
+/*
+https://bunchapp.co/docs/bunch-files/comments/
 
-/* 
-Comments can also use a block syntax 
-for multi-line comments 
+Lines that start with '# ' or '// ' are comments
+
+You can also append ' # ' or ' // ' at the end of a line to make a comment
+
+Block syntax is also supported for single or multi-line
 */
+/*
+/* Comments can also use a block syntax
+/* for multi-line comments 
+*/
+// Comment
+# Comment
+
 
 /*
 
@@ -37,46 +48,55 @@ ${website}
 %{urlencoded}
 ${srcdir/raw}
 
-# Hide all visible apps (use at top of bunch)
+/*
+https://bunchapp.co/docs/bunch-files/apps/
+
+Apps and files
+*/
+
+# hide all visible apps (use at top of bunch)
 @@
 
-/* Apps to launch start at the beginning of a line, no
-need to quote or escape. */
-Messages ~5
+# just a plain ol' app
+Messages
 
-# Apps launched by a Bunch can be quit when the Bunch is closed
-// Add a percent symbol to ignore it when quitting (keep it running)
-%Terminal
+# keep running when quitting bunch
+%Terminal # comment
 
 # Start a line with @ to "focus" that app (hide others)
 # Focus commands should be the last item in the Bunch
-@Copy 'Em_ ~5
+# optionally add a delay in case other apps launching ahead of it
+# are really slow
+@Copy 'Em ~5
+
+# attempt to hide app after launching
+TextMate_
+
+# force forground and unhide
+Visual Studio Code^
 
 # Start a line with an exclamation point to quit that app if it's running
-!!Mail ~5
+!Mail
 
-/* Include a line starting with a dash to open specific
-   files in the app.
-   If the first file listed is "XX", all open windows
-   for the app will be closed first */
+Tower
+# open files by starting a line with a -
+- ${srcdir}/myproj
+- (pause 5)  // wait 5 seconds before opening next file
+- ${srcdir}/anotherproj
+
 Finder
+# XX is a special command for tell the app to close all windows
 - XX
-- ${srcdir}
+- ~/
+-> ${srcdir}/docs  # open in another tab, only works for Finder
 - ~/Documents
+# triple bang finder to close it (all other apps only require one bang)
+!!!Finder
 
-/* 
-https://bunchapp.co/docs/bunch-files/commands/
-
-commands are enclosed in parenthesis
-
-! prefix runs only when closing a bunch
-% prefix avoids reversing when closing a bunch
-
-*/
-(hide desktop)
-(${showhide} desktop)
-!(do not disturb ${onoff/raw} ${onoff})
-%(show dock)
+# Default is a special app, so it gets special treatment
+Default # comment
+- ~/tmp/Somefile.txt
+- ~/Documents/Other file.pages  // with comment at end
 
 /*
 https://bunchapp.co/docs/bunch-files/opening-web-pages/
@@ -88,9 +108,25 @@ Prefix with a browser name and a colon to open in a specific browser
 
 */
 
-x-marked://open?file=filename.md
-https://brettterpstra.com/projects
+x-marked://open?file=${srcdir}/file_name.md
+https://brettterpstra.com/projects   //comment here too
+# specify which browser to use
 brave:https://www.kotfu.net
+
+/* 
+https://bunchapp.co/docs/bunch-files/commands/
+
+Commands are enclosed in parenthesis
+
+! prefix runs only when closing a bunch
+% prefix avoids reversing when closing a bunch
+
+*/
+(hide desktop)
+(${showhide} desktop)
+!(do not disturb ${onoff/raw} ${onoff}) // comments
+%(show dock)
+
 
 /*
 https://bunchapp.co/docs/bunch-files/scripts/
