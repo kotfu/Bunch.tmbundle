@@ -30,6 +30,18 @@ TextMate won't automatically keep this bundle updated for you. Update the bundle
 by following the installation steps.
 
 
+## Customize the Theme
+
+You can create your own customzed theme to be used for Bunch files. Here's a list
+of the syntax elements and the scope used for it in the language grammer. You can
+set or change the visual attributes of any scope in the grammer in your theme.
+
+- Commands = storage.type.function...
+- Apps, Files, and URLS = entity.name.function...
+- ! and @ operators = keyword.operator...
+- Comments = comment.line... and comment.block...
+
+
 ## For Bundle Developers
 
 Reference material for customizing and creating bundles:
