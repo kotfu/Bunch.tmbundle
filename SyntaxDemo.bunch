@@ -193,7 +193,7 @@ https://bunchapp.co/docs/bunch-files/snippets/
 # bunches as snippets
 <Comms.bunch ~5
 # https://bunchapp.co/docs/bunch-files/interactivity/optional-snippets/
-<Comms.bunch#Social Media ?"Fly into the time-shifting vortex?"
+!<Comms.bunch#Social Media ?"Fly into the ${somevar} time-shifting vortex?"
 
 # start marker for an embedded snippet
 ___

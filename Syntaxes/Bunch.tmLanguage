@@ -545,6 +545,8 @@
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>comment</key>
+							<string>the name of the snippet file and the fragment, if present</string>
 							<key>name</key>
 							<string>entity.name.section</string>
 							<key>patterns</key>
@@ -557,6 +559,51 @@
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>comment</key>
+							<string>the dialog phrase</string>
+							<key>name</key>
+							<string>entity.name.section</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.operator.bunch</string>
+										</dict>
+										<key>2</key>
+										<dict>
+											<key>name</key>
+											<string>string.quoted.single.bunch</string>
+											<key>patterns</key>
+											<array>
+												<dict>
+													<key>include</key>
+													<string>#variable</string>
+												</dict>
+											</array>
+										</dict>
+										<key>3</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.operator.bunch</string>
+										</dict>
+									</dict>
+									<key>comment</key>
+									<string>keystrokes are surrounded by braces</string>
+									<key>match</key>
+									<string>(\?\")(.*)(\")</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+							</array>
+						</dict>
+						<key>8</key>
+						<dict>
 							<key>name</key>
 							<string>keyword.operator.delay.bunch</string>
 						</dict>
@@ -564,7 +611,7 @@
 					<key>comment</key>
 					<string>match the lines that insert or call a snippet</string>
 					<key>match</key>
-					<string>^( {4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)(\s~\d+)?$</string>
+					<string>^( {4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)((\?".*")|(\s~\d+))$</string>
 				</dict>
 				<dict>
 					<key>comment</key>
