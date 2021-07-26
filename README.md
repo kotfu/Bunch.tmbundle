@@ -41,16 +41,6 @@ set or change the visual attributes of any scope in the grammer in your theme.
 - Comments = comment.line... and comment.block...
 
 
-## Clarificaitons
-
-- Are (delay 15) and (pause 15) synonyms? https://bunchapp.co/docs/bunch-files/delay/
-  makes it seem like yes, but it isn't explicit. We have assumed they are.
-- Section header documentation says it can start with a '#' and whitespace is allowed after
-  the first character. Comments documentation says a line comment can start with '#' and must
-  be followed by one or more spaces. So if the line is '# [Section]' is it a comment or a
-  section header?
-
-
 ## For Bundle Developers
 
 Reference material for customizing and creating bundles:

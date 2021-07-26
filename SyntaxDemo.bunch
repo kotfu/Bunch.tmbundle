@@ -27,16 +27,8 @@ You can also append ' # ' or ' // ' at the end of a line to make a comment
 
 Block syntax is also supported for single or multi-line
 */
-/*
-/* Comments can also use a block syntax
-/* for multi-line comments 
-*/
-// Comment
-# Comment
-
 
 /*
-
 https://bunchapp.co/docs/bunch-files/variables
 
 Variables can be assigned in front matter, or passed into snippets, or
@@ -132,7 +124,7 @@ Safari
 
 x-marked://open?file=${srcdir}/file_name.md
 https://brettterpstra.com/projects
-brave:https://www.kotfu.net  # specify which browser to use
+brave:https://www.kotfu.net  // specify which browser to use
 
 /*
 https://bunchapp.co/docs/bunch-files/keystrokes/
@@ -200,11 +192,13 @@ https://bunchapp.co/docs/bunch-files/snippets/
     <waiting.snippet#Position
 # bunches as snippets
 <Comms.bunch ~5
+# https://bunchapp.co/docs/bunch-files/interactivity/optional-snippets/
+<Comms.bunch#Social Media ?"Fly into the time-shifting vortex?"
 
 # start marker for an embedded snippet
 ___
 // these should all be section headers, have to have at least 2 dashes
-###[Section]
+###[Section Name]
 #[Section]#########
 -------[Section]-----------
 --[Section]
