@@ -21,6 +21,18 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#assignment</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>snippets need to be before comments</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#snippet</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#comments</string>
 		</dict>
 		<dict>
@@ -30,10 +42,6 @@
 		<dict>
 			<key>include</key>
 			<string>#hideall</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#snippet</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -126,6 +134,67 @@
 			<key>match</key>
 			<string>^(!{1,3})?([|@%]*)(\w.*)$</string>
 		</dict>
+		<key>assignment</key>
+		<dict>
+			<key>comment</key>
+			<string>variable assignment outside of front matter TODO consolidate rules from frontmatter</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>assignment from script</string>
+					<key>match</key>
+					<string>^(\w+)\s*(=)\s*([*$])\s+(.*)$</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>normal assignment</string>
+					<key>match</key>
+					<string>^(\w+)\s*(=)\s*(.*)$</string>
+				</dict>
+			</array>
+		</dict>
 		<key>command</key>
 		<dict>
 			<key>captures</key>
@@ -180,11 +249,16 @@
 							<key>name</key>
 							<string>comment.line.number-sign.bunch</string>
 						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line.number-sign.bunch</string>
+						</dict>
 					</dict>
 					<key>comment</key>
 					<string>comments starting with #</string>
 					<key>match</key>
-					<string>(^|\s+)(\#\s.*)$</string>
+					<string>(^|\s+)(\#+)(\s.*)$</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -199,11 +273,16 @@
 							<key>name</key>
 							<string>comment.line.double-slash.bunch</string>
 						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line.double-slash.bunch</string>
+						</dict>
 					</dict>
 					<key>comment</key>
 					<string>comments starting with //</string>
 					<key>match</key>
-					<string>(^|\s+)(//.*)$</string>
+					<string>(^|\s+)(/{2,})(.*)$</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -236,6 +315,93 @@
 					<string>~\d+</string>
 					<key>name</key>
 					<string>keyword.operator.delay.bunch</string>
+				</dict>
+			</array>
+		</dict>
+		<key>dialogs</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+							</array>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>prompt for text input</string>
+					<key>match</key>
+					<string>(\?\")(.*)(\")</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>comment</key>
+							<string>choices separated by comma</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>string.quoted.single.bunch</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>\s*([^,]+?)\s*</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>\s*(,)\s*</string>
+									<key>name</key>
+									<string>keyword.operator.bunch</string>
+								</dict>
+							</array>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.double.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>select options from a list</string>
+					<key>match</key>
+					<string>(\?\[)\s*(.*)\s*(\])\s+(\".*?\")?</string>
 				</dict>
 			</array>
 		</dict>
@@ -427,6 +593,8 @@
 							<dict>
 								<key>1</key>
 								<dict>
+									<key>comment</key>
+									<string>the keyword or variable name</string>
 									<key>name</key>
 									<string>variable.parameter</string>
 									<key>patterns</key>
@@ -448,8 +616,27 @@
 								</dict>
 								<key>3</key>
 								<dict>
-									<key>name</key>
-									<string>string.quoted.single.bunch</string>
+									<key>comment</key>
+									<string>many ways to populate a variable</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#dialogs</string>
+										</dict>
+										<dict>
+											<key>include</key>
+											<string>#script</string>
+										</dict>
+										<dict>
+											<key>comment</key>
+											<string>bare strings with no quotes</string>
+											<key>match</key>
+											<string>.*</string>
+											<key>name</key>
+											<string>string.quoted.single.bunch</string>
+										</dict>
+									</array>
 								</dict>
 							</dict>
 							<key>comment</key>
@@ -566,35 +753,8 @@
 							<key>patterns</key>
 							<array>
 								<dict>
-									<key>captures</key>
-									<dict>
-										<key>1</key>
-										<dict>
-											<key>name</key>
-											<string>keyword.operator.bunch</string>
-										</dict>
-										<key>2</key>
-										<dict>
-											<key>name</key>
-											<string>string.quoted.single.bunch</string>
-											<key>patterns</key>
-											<array>
-												<dict>
-													<key>include</key>
-													<string>#variable</string>
-												</dict>
-											</array>
-										</dict>
-										<key>3</key>
-										<dict>
-											<key>name</key>
-											<string>keyword.operator.bunch</string>
-										</dict>
-									</dict>
-									<key>comment</key>
-									<string>keystrokes are surrounded by braces</string>
-									<key>match</key>
-									<string>(\?\")(.*)(\")</string>
+									<key>include</key>
+									<string>#dialogs</string>
 								</dict>
 								<dict>
 									<key>include</key>
@@ -623,9 +783,9 @@
 				</dict>
 				<dict>
 					<key>comment</key>
-					<string>Section headers and markers</string>
+					<string>fragment header</string>
 					<key>match</key>
-					<string>^(-{2,}|\#{1,}|={1,}|&gt;{1,})\[\w+.*$</string>
+					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)([^\]]+)(\])(.*$)</string>
 					<key>name</key>
 					<string>entity.name.section</string>
 				</dict>
@@ -675,6 +835,11 @@
 							<key>name</key>
 							<string>variable.language</string>
 						</dict>
+						<key>10</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language</string>
+						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
@@ -687,19 +852,37 @@
 						</dict>
 						<key>5</key>
 						<dict>
+							<key>comment</key>
+							<string>the slash before a transformation</string>
 							<key>name</key>
 							<string>keyword.other</string>
 						</dict>
 						<key>6</key>
 						<dict>
+							<key>comment</key>
+							<string>the transformation, i.e. url, shell, raw</string>
 							<key>name</key>
 							<string>variable.language</string>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>comment</key>
+							<string>the colon to indicate a default value</string>
+							<key>name</key>
+							<string>keyword.other</string>
+						</dict>
+						<key>9</key>
+						<dict>
+							<key>comment</key>
+							<string>the default value</string>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
 						</dict>
 					</dict>
 					<key>comment</key>
 					<string>variable references with their various incantations and transformations</string>
 					<key>match</key>
-					<string>([\$%]\{)(\w+)((/)(url|shell|raw|typed))?(\})</string>
+					<string>([\$%]\{)(\w+)(((/)(url|shell|raw|typed))|((:)(.*)))?(\})</string>
 				</dict>
 			</array>
 		</dict>

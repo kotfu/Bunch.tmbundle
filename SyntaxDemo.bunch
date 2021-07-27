@@ -6,9 +6,12 @@ open at: 10am
 # all other keys assign variables
 frontvar: Some new value
 srcdir: ~/src/myproject
+# TODO mark the $ or * as an operator like below
 varfromscript: $ echo thevalue
 website: https://bunchapp.co
 onoff: off
+askvar: ?"What value for askvar"
+selectvar: ?[ Choice 1, Choice 2 ] "Pick a choice"
 ---
 
 /*
@@ -39,6 +42,20 @@ Variables can be used nearly anywhere
 ${website}
 %{urlencoded}
 ${srcdir/raw}
+# variables can have a default value
+${taskapp:OmniFocus}
+# variables can also be direct assigned outside of front matter
+var1 = some value
+# TODO variables can be assigned from a script, style the * as an operator like below
+var2 = * myscript.applescript
+var3 = $ myscript.sh
+# TODO https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
+var4 = ?[ First, Second, Third ] "Which one?"
+var5 = ?[
+    First
+    Second
+    Third
+] "Which one?"
 
 /*
 https://bunchapp.co/docs/bunch-files/apps/
@@ -183,7 +200,7 @@ $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 https://bunchapp.co/docs/bunch-files/snippets/
 
 */
-<snippet#Section Name
+<snippet#Fragment Name
 - withvariable = thevalue
 <<#embedded ~5
 # snippet composed of variables
@@ -197,13 +214,15 @@ https://bunchapp.co/docs/bunch-files/snippets/
 
 # start marker for an embedded snippet
 ___
-// these should all be section headers, have to have at least 2 dashes
-###[Section Name]
-#[Section]#########
--------[Section]-----------
---[Section]
-------------------------------------------[Section]--
->>>[Section]
-=[Section]== Add a comment, if you like
->-=# [Section] #=-<
+// these should all be section headers, have to have 2 dashes, or one
+// of = > # followed by a [
+###[Fragment Name]
+# [ Fragment ] #########
+-------[My Fragment]-----------
+-- [Fragment]
+------------------------------------------[Frag]--
+>>>[Some Fragment]
+=[Fragment]== Add a comment, if you like
+>-=# [My Fragment] #=-<
+
 
