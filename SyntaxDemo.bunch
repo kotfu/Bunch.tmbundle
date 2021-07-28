@@ -10,8 +10,6 @@ srcdir: ~/src/myproject
 varfromscript: $ echo thevalue
 website: https://bunchapp.co
 onoff: off
-askvar: ?"What value for askvar"
-selectvar: ?[ Choice 1, Choice 2 ] "Pick a choice"
 ---
 
 /*
@@ -46,16 +44,24 @@ ${srcdir/raw}
 ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
 var1 = some value
-# TODO variables can be assigned from a script, style the * as an operator like below
+# https://bunchapp.co/docs/bunch-files/interactivity/populating-variables/
+var2 = ?"What should var2 contain"
+# variables can be assigned from a script
 var2 = * myscript.applescript
 var3 = $ myscript.sh
-# TODO https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
+# https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 var4 = ?[ First, Second, Third ] "Which one?"
 var5 = ?[
     First
     Second
     Third
 ] "Which one?"
+var7 = ?{
+    Marked => <coding.snippets#Marked
+    Bunch => <coding.snippets#Bunch
+    nvUltra => <coding.snippets#nvUltra
+} "Whatcha Coding?"
+
 
 /*
 https://bunchapp.co/docs/bunch-files/apps/

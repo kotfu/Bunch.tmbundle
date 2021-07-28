@@ -12,6 +12,12 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>comment</key>
+			<string>order matters here, once something matches, it cant be matched by something else</string>
+		</dict>
+		<dict>
+			<key>disabled</key>
+			<integer>1</integer>
 			<key>include</key>
 			<string>#strings</string>
 		</dict>
@@ -57,7 +63,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#script</string>
+			<string>#scripts</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -132,7 +138,7 @@
 			<key>comment</key>
 			<string>match applications with modifiers, and urls</string>
 			<key>match</key>
-			<string>^(!{1,3})?([|@%]*)(\w.*)$</string>
+			<string>(!{1,3})?([|@%]*)(\w.*)</string>
 		</dict>
 		<key>assignment</key>
 		<dict>
@@ -140,6 +146,41 @@
 			<string>variable assignment outside of front matter TODO consolidate rules from frontmatter</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>^(\w+)\s*(=)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.parameter</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>match the variable and the = sign</string>
+					<key>end</key>
+					<string>$</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#dialogs</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#scripts</string>
+						</dict>
+						<dict>
+							<key>comment</key>
+							<string>bare strings with no quotes</string>
+							<key>match</key>
+							<string>.*</string>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>captures</key>
 					<dict>
@@ -166,6 +207,8 @@
 					</dict>
 					<key>comment</key>
 					<string>assignment from script</string>
+					<key>disabled</key>
+					<integer>1</integer>
 					<key>match</key>
 					<string>^(\w+)\s*(=)\s*([*$])\s+(.*)$</string>
 				</dict>
@@ -192,6 +235,10 @@
 					<string>normal assignment</string>
 					<key>match</key>
 					<string>^(\w+)\s*(=)\s*(.*)$</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#dialogs</string>
 				</dict>
 			</array>
 		</dict>
@@ -333,7 +380,7 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>string.quoted.single.bunch</string>
+							<string>string.quoted.double.bunch</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -352,56 +399,146 @@
 					<string>prompt for text input</string>
 					<key>match</key>
 					<string>(\?\")(.*)(\")</string>
+					<key>name</key>
+					<string>meta.dialog.array.bunch</string>
 				</dict>
 				<dict>
-					<key>captures</key>
+					<key>begin</key>
+					<string>\?\[</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>single-line or multi-line query arrays</string>
+					<key>end</key>
+					<string>(\])\s*(")(.*?)(")?\s*$</string>
+					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.bunch</string>
+							<string>keyword.operator.dialog.bunch</string>
 						</dict>
 						<key>2</key>
 						<dict>
-							<key>comment</key>
-							<string>choices separated by comma</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>captures</key>
-									<dict>
-										<key>1</key>
-										<dict>
-											<key>name</key>
-											<string>string.quoted.single.bunch</string>
-										</dict>
-									</dict>
-									<key>match</key>
-									<string>\s*([^,]+?)\s*</string>
-								</dict>
-								<dict>
-									<key>match</key>
-									<string>\s*(,)\s*</string>
-									<key>name</key>
-									<string>keyword.operator.bunch</string>
-								</dict>
-							</array>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.bunch</string>
+							<string>string.quoted.double.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+							</array>
 						</dict>
 						<key>4</key>
 						<dict>
 							<key>name</key>
-							<string>string.quoted.double.bunch</string>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.dialog.array.bunch</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.bunch</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>\s*([^,]+?)\s*</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\s*(,)\s*</string>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\?\{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>select options from a list</string>
-					<key>match</key>
-					<string>(\?\[)\s*(.*)\s*(\])\s+(\".*?\")?</string>
+					<string>single-line or multi-line query dictionariess</string>
+					<key>end</key>
+					<string>(\})\s*(")(.*?)(")?\s*$</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.double.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#variable</string>
+								</dict>
+							</array>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.dialog.dictionary.bunch</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.single.bunch</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>\s*([^,]+?)\s*</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\s*(=&gt;)\s*</string>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -563,7 +700,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^(---)\s*$</string>
+					<string>^(-{3,})\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -575,7 +712,7 @@
 					<key>comment</key>
 					<string>YAML-ish front matter at the top of the file</string>
 					<key>end</key>
-					<string>^(---)\s*$</string>
+					<string>^(-{3,})\s*</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -594,7 +731,7 @@
 								<key>1</key>
 								<dict>
 									<key>comment</key>
-									<string>the keyword or variable name</string>
+									<string>the key or variable name</string>
 									<key>name</key>
 									<string>variable.parameter</string>
 									<key>patterns</key>
@@ -616,17 +753,11 @@
 								</dict>
 								<key>3</key>
 								<dict>
-									<key>comment</key>
-									<string>many ways to populate a variable</string>
 									<key>patterns</key>
 									<array>
 										<dict>
 											<key>include</key>
-											<string>#dialogs</string>
-										</dict>
-										<dict>
-											<key>include</key>
-											<string>#script</string>
+											<string>#scripts</string>
 										</dict>
 										<dict>
 											<key>comment</key>
@@ -640,7 +771,7 @@
 								</dict>
 							</dict>
 							<key>comment</key>
-							<string>match "keyword: value" lines</string>
+							<string>match "key: value" </string>
 							<key>match</key>
 							<string>^(\S[\w ]+)(:)\s*(.*?)$</string>
 						</dict>
@@ -666,7 +797,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>script</key>
+		<key>scripts</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -709,7 +840,7 @@
 					<key>comment</key>
 					<string>the multiple variations of script lines</string>
 					<key>match</key>
-					<string>^([|!]*)?([*$&amp;])\s+(.*?)(\(display(?!\w).*\))?(\s~\d+)?$</string>
+					<string>([|!]*)?([*$&amp;])\s+(.*?)(\(display(?!\w).*\))?(\s~\d+)?</string>
 				</dict>
 			</array>
 		</dict>
