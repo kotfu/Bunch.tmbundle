@@ -14,10 +14,9 @@ onoff: off
 /*
 TODO
 
-- [ ] conditions
+- [x] conditions
 - [x] fix scripts
-
-- [ ] pipes to run in parallel, https://bunchapp.co/docs/bunch-files/scripts/shell-scripts/#order-of-execution
+- [x] pipes to run in parallel
 - [ ] checkbox arrays
 - [ ] global variables
 
@@ -97,6 +96,7 @@ Messages
 
 # attempt to hide app after launching
 # pipe to ask for parallel execution
+# 
 |TextMate_
 
 # force forground and unhide
@@ -149,24 +149,28 @@ https://bunchapp.co/docs/bunch-files/logic/
 
 Conditional Logic
 */
-if (var_one is "Choice 1" OR var_one is "Choice 2")
+if (var_one is NOT "Choice NOT 1" OR !var_one == "Choice 2")
 	var_two = "Project 1"
 	<<#Load Project
-else if var_one is "Choice 2"
-		if someother AND (fred OR george)
+else if $var_one is "Choice 2"
+		if $someother AND (fred OR george)
 			var_two = "Project 2"
 			Finder
 			- ~/tmp/mydir
-			<<#Load Project
+			# a waiting snippet
+			Messages
+				<<#Load Project
+		else if weekday is after friday
+			Brave
+		else if joe !*= something
+			Firefox
 		else
 			<<#My Fragment
+			$ myscript.sh ${somevar} "arg 2"
 		end
 else
 	<<#Load Default
 end
-if var_one is NOT "Choice 2"
-end
-
 if self is opening
     var5 = ?[
     	First
@@ -263,6 +267,8 @@ Append ~4 to delay the launch
 - variable1 = contents with = sign
 # shell scripts can have a display command at the end
 $ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d) ~4
+# and do parallel execution
+# https://bunchapp.co/docs/bunch-files/scripts/shell-scripts/#order-of-execution
 | Safari
 | Messages
 # delay after display, i.e. voice says "hello 3" after waiting 2 seconds

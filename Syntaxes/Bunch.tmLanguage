@@ -154,7 +154,7 @@
 			<key>comment</key>
 			<string>match applications with modifiers, and urls</string>
 			<key>match</key>
-			<string>(!{1,3})?([|@%]*)(\w.*)</string>
+			<string>(!{1,3})?([|@%]*)\s*(\w.*)</string>
 		</dict>
 		<key>assignment</key>
 		<dict>
@@ -256,12 +256,18 @@
 		</dict>
 		<key>bool</key>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.boolean.bunch</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>match boolean operators used in conditionals</string>
 			<key>match</key>
-			<string>\bAND|OR|NOT\b</string>
-			<key>name</key>
-			<string>keyword.operator.boolean.bunch</string>
+			<string>\s(AND|OR|NOT)\s</string>
 		</dict>
 		<key>command</key>
 		<dict>
@@ -388,7 +394,13 @@
 					<key>match</key>
 					<string>\b((not )?(has|is)?\s*(not|!)?\s*(parent|child)|(not )?(is|does)( not)?( (running|before|after|open(ing)?|clos(ing|ed)))?|(not|!)|(starts?|begins?|ends?) with|contains?|(less|greater)( than)?( or equals?( to)?)?|equals?( to)?|[!\^\$\*&lt;=&gt;]+|(yes|no|true|false))\b</string>
 					<key>name</key>
-					<string>storage.type.function</string>
+					<string>keyword.operator.word.bunch</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>==|!=|\^=|!\^=|\$=|!\$=|\*=|!\*=|!</string>
+					<key>name</key>
+					<string>keyword.operator.word.bunch</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -445,6 +457,8 @@
 								<dict>
 									<key>comment</key>
 									<string>everything thats left is a variable</string>
+									<key>disabled</key>
+									<integer>0</integer>
 									<key>match</key>
 									<string>\w+</string>
 									<key>name</key>
