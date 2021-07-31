@@ -16,12 +16,6 @@
 			<string>order matters here, once something matches, it cant be matched by something else</string>
 		</dict>
 		<dict>
-			<key>disabled</key>
-			<integer>1</integer>
-			<key>include</key>
-			<string>#strings</string>
-		</dict>
-		<dict>
 			<key>include</key>
 			<string>#interpolation</string>
 		</dict>
@@ -55,11 +49,11 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#dialog</string>
+			<string>#frontmatter</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#frontmatter</string>
+			<string>#dialog</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -106,6 +100,10 @@
 					<array>
 						<dict>
 							<key>comment</key>
+							<string>order matters here</string>
+						</dict>
+						<dict>
+							<key>comment</key>
 							<string>Default is a special app name</string>
 							<key>match</key>
 							<string>Default(?=(\s|$))</string>
@@ -137,8 +135,12 @@
 							<string>keyword.other.browser.bunch</string>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#delay</string>
+							<key>comment</key>
+							<string>look for a delay phrase</string>
+							<key>match</key>
+							<string>~\d+</string>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -159,7 +161,7 @@
 		<key>assignment</key>
 		<dict>
 			<key>comment</key>
-			<string>variable assignment outside of front matter TODO consolidate rules from frontmatter</string>
+			<string>variable assignment outside of front matter</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -206,61 +208,6 @@
 							<string>string.quoted.single.bunch</string>
 						</dict>
 					</array>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>variable.parameter</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.single.bunch</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>assignment from script</string>
-					<key>disabled</key>
-					<integer>1</integer>
-					<key>match</key>
-					<string>^(\w+)\s*(=)\s*([*$])\s+(.*)$</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>variable.parameter</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.single.bunch</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>normal assignment</string>
-					<key>match</key>
-					<string>^(\w+)\s*(=)\s*(.*)$</string>
 				</dict>
 			</array>
 		</dict>
@@ -481,20 +428,6 @@
 					<string>match lines with conditionals</string>
 					<key>match</key>
 					<string>^(?: {4}|\t)*((?:else )?if|else|end)(.*)</string>
-				</dict>
-			</array>
-		</dict>
-		<key>delay</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>comment</key>
-					<string>delay operator at the end of script and app lines</string>
-					<key>match</key>
-					<string>~\d+</string>
-					<key>name</key>
-					<string>keyword.operator.delay.bunch</string>
 				</dict>
 			</array>
 		</dict>
@@ -795,7 +728,7 @@
 					<key>comment</key>
 					<string>horizontal rule to separate multiple sets of checkboxes</string>
 					<key>match</key>
-					<string>^---$</string>
+					<string>^(-{3,})\s*</string>
 					<key>name</key>
 					<string>keyword.operator.separatecheckboxes.bunch</string>
 				</dict>
@@ -1007,7 +940,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^(-{3,})\s*</string>
+					<string>\A(-{3,})\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>

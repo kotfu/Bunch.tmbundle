@@ -11,19 +11,6 @@ website: https://bunchapp.co
 onoff: off
 ---
 /*
-TODO
-
-- [x] conditions
-- [x] fix scripts
-- [x] pipes to run in parallel
-- [x] checkbox arrays
-- [x] global variables
-- [x] dialogs from external files: https://bunchapp.co/docs/bunch-files/interactivity/external-files
-- [ ] check if we still need stand-alone named delay pattern
-
-*/
-
-/*
 https://bunchapp.co/docs/bunch-files/frontmatter/
 
 YAML-ish keys and values. Can contain commands and variable
@@ -95,7 +82,8 @@ Messages
 # Focus commands should be the last item in the Bunch
 # optionally add a delay in case other apps launching ahead of it
 # are really slow
-@Copy 'Em ~5
+@Copy 'Em ~5 # comments ~5
+
 
 # attempt to hide app after launching
 # pipe to ask for parallel execution
