@@ -6,7 +6,6 @@ open at: 10am
 # all other keys assign variables
 frontvar: Some new value
 srcdir: ~/src/myproject
-# TODO mark the $ or * as an operator like below
 varfromscript: $ echo thevalue
 website: https://bunchapp.co
 onoff: off
@@ -18,7 +17,7 @@ TODO
 - [x] fix scripts
 - [x] pipes to run in parallel
 - [ ] checkbox arrays
-- [ ] global variables
+- [x] global variables
 
 */
 
@@ -55,7 +54,7 @@ ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
 var1 = some value
 # https://bunchapp.co/docs/bunch-files/interactivity/populating-variables/
-var2 = ?"What should var2 contain"
+global var2 = ?"What should var2 contain"
 # variables can be assigned from a script
 var2 = * myscript.applescript
 var3 = $ myscript.sh ${var} "arg 2"

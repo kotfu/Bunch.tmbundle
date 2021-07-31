@@ -164,13 +164,23 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^\s*(\w+)\s*(=)\s*</string>
+					<string>^\s*(global)?\s*(\w+)\s*(=)\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
 						<dict>
 							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
 							<string>variable.parameter</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
 						</dict>
 					</dict>
 					<key>comment</key>
