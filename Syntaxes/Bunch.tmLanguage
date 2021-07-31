@@ -23,7 +23,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#variable</string>
+			<string>#interpolation</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -51,6 +51,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#condition</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#dialog</string>
 		</dict>
 		<dict>
@@ -75,7 +79,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#scripts</string>
+			<string>#script</string>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -138,7 +142,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#variable</string>
+							<string>#interpolation</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -160,7 +164,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>^(\w+)\s*(=)\s*</string>
+					<string>^\s*(\w+)\s*(=)\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -181,7 +185,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#scripts</string>
+							<string>#script</string>
 						</dict>
 						<dict>
 							<key>comment</key>
@@ -250,6 +254,15 @@
 				</dict>
 			</array>
 		</dict>
+		<key>bool</key>
+		<dict>
+			<key>comment</key>
+			<string>match boolean operators used in conditionals</string>
+			<key>match</key>
+			<string>\bAND|OR|NOT\b</string>
+			<key>name</key>
+			<string>keyword.operator.boolean.bunch</string>
+		</dict>
 		<key>command</key>
 		<dict>
 			<key>captures</key>
@@ -272,7 +285,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#variable</string>
+							<string>#interpolation</string>
 						</dict>
 					</array>
 				</dict>
@@ -359,6 +372,94 @@
 				</dict>
 			</array>
 		</dict>
+		<key>comparison</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>comparison operators</string>
+					<key>match</key>
+					<string>\b(weekday|time)\b</string>
+					<key>name</key>
+					<string>keyword.operator.word.bunch</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b((not )?(has|is)?\s*(not|!)?\s*(parent|child)|(not )?(is|does)( not)?( (running|before|after|open(ing)?|clos(ing|ed)))?|(not|!)|(starts?|begins?|ends?) with|contains?|(less|greater)( than)?( or equals?( to)?)?|equals?( to)?|[!\^\$\*&lt;=&gt;]+|(yes|no|true|false))\b</string>
+					<key>name</key>
+					<string>storage.type.function</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(is )?NOT</string>
+					<key>name</key>
+					<string>keyword.operator.word.bunch</string>
+				</dict>
+			</array>
+		</dict>
+		<key>condition</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.conditional.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>comment</key>
+									<string>the order of these rules matters a lot</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>\(</string>
+									<key>name</key>
+									<string>keyword.operator.group.bunch</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>\)</string>
+									<key>name</key>
+									<string>keyword.operator.group.bunch</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#bool</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#comparison</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#strings</string>
+								</dict>
+								<dict>
+									<key>comment</key>
+									<string>everything thats left is a variable</string>
+									<key>match</key>
+									<string>\w+</string>
+									<key>name</key>
+									<string>variable.parameter</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>match lines with conditionals</string>
+					<key>match</key>
+					<string>^(?: {4}|\t)*((?:else )?if|else|end)(.*)</string>
+				</dict>
+			</array>
+		</dict>
 		<key>delay</key>
 		<dict>
 			<key>patterns</key>
@@ -393,7 +494,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#variable</string>
+									<string>#interpolation</string>
 								</dict>
 							</array>
 						</dict>
@@ -445,7 +546,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#variable</string>
+									<string>#interpolation</string>
 								</dict>
 							</array>
 						</dict>
@@ -529,7 +630,7 @@
 							<array>
 								<dict>
 									<key>include</key>
-									<string>#variable</string>
+									<string>#interpolation</string>
 								</dict>
 							</array>
 						</dict>
@@ -631,7 +732,7 @@
 										</dict>
 										<dict>
 											<key>include</key>
-											<string>#variable</string>
+											<string>#interpolation</string>
 										</dict>
 									</array>
 								</dict>
@@ -666,7 +767,7 @@
 										</dict>
 										<dict>
 											<key>include</key>
-											<string>#variable</string>
+											<string>#interpolation</string>
 										</dict>
 									</array>
 								</dict>
@@ -702,7 +803,7 @@
 									<array>
 										<dict>
 											<key>include</key>
-											<string>#variable</string>
+											<string>#interpolation</string>
 										</dict>
 										<dict>
 											<key>include</key>
@@ -718,7 +819,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#variable</string>
+							<string>#interpolation</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -730,7 +831,7 @@
 			<key>comment</key>
 			<string>files and file like lines that start with a -</string>
 			<key>match</key>
-			<string>^(-&gt;?)\s(.*)</string>
+			<string>^\s*(-&gt;?)\s(.*)</string>
 		</dict>
 		<key>fragment</key>
 		<dict>
@@ -843,7 +944,7 @@
 									<array>
 										<dict>
 											<key>include</key>
-											<string>#scripts</string>
+											<string>#script</string>
 										</dict>
 										<dict>
 											<key>comment</key>
@@ -883,144 +984,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>scripts</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.script.bunch</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.script.bunch</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>string.quoted.single.bunch</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>#variable</string>
-								</dict>
-							</array>
-						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.delay.bunch</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>name</key>
-							<string>storage.type.function</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>the multiple variations of script lines</string>
-					<key>match</key>
-					<string>([|!]*)?([*$&amp;])\s+(.*?)(\(display(?!\w).*\))?(\s~\d+)?</string>
-				</dict>
-			</array>
-		</dict>
-		<key>snippet</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
-						</dict>
-						<key>3</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
-						</dict>
-						<key>5</key>
-						<dict>
-							<key>comment</key>
-							<string>the name of the snippet file and the fragment, if present</string>
-							<key>name</key>
-							<string>entity.name.section</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>#variable</string>
-								</dict>
-							</array>
-						</dict>
-						<key>7</key>
-						<dict>
-							<key>comment</key>
-							<string>the dialog phrase</string>
-							<key>name</key>
-							<string>string.quoted.double.bunch</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>#variable</string>
-								</dict>
-							</array>
-						</dict>
-						<key>8</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.delay.bunch</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>match the lines that insert or call a snippet</string>
-					<key>match</key>
-					<string>( {4}|\t)?(!)?(&lt;&lt;?)(\s*)([^?~]+)((\?".*")|(~\d+))?</string>
-				</dict>
-			</array>
-		</dict>
-		<key>strings</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>"(.*?)"</string>
-					<key>name</key>
-					<string>string.quoted.double.bunch</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>'(.*?)'</string>
-					<key>name</key>
-					<string>string.quoted.single.bunch</string>
-				</dict>
-			</array>
-		</dict>
-		<key>typepause</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>comment</key>
-					<string>pause sequence in typed strings</string>
-					<key>match</key>
-					<string>\\\\!\d+</string>
-					<key>name</key>
-					<string>keyword.operator.bunch</string>
-				</dict>
-			</array>
-		</dict>
-		<key>variable</key>
+		<key>interpolation</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -1080,6 +1044,179 @@
 					<string>variable references with their various incantations and transformations</string>
 					<key>match</key>
 					<string>([\$%]\{)(\w+)(((/)(url|shell|raw|typed))|((:)(.*)))?(\})</string>
+				</dict>
+			</array>
+		</dict>
+		<key>script</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.script.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.script.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>applescripts and automator workflows</string>
+					<key>match</key>
+					<string>(!!?)?([*&amp;])\s+(.*?)(\s~\d+)?$</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.script.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.script.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>storage.type.function</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>shell scripts can have a display clause</string>
+					<key>match</key>
+					<string>(!!?)?(\$)\s+(.*?)(\(display(?!\w).*\))?(\s~\d+)?$</string>
+				</dict>
+			</array>
+		</dict>
+		<key>snippet</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>comment</key>
+							<string>the name of the snippet file and the fragment, if present</string>
+							<key>name</key>
+							<string>entity.name.section</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>comment</key>
+							<string>the dialog phrase</string>
+							<key>name</key>
+							<string>string.quoted.double.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>8</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>match the lines that insert or call a snippet</string>
+					<key>match</key>
+					<string>( {4}|\t)?(!)?(&lt;&lt;?)(\s*)([^?~]+)((\?".*")|(~\d+))?</string>
+				</dict>
+			</array>
+		</dict>
+		<key>strings</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>"(.*?)"</string>
+					<key>name</key>
+					<string>string.quoted.double.bunch</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>'(.*?)'</string>
+					<key>name</key>
+					<string>string.quoted.single.bunch</string>
+				</dict>
+			</array>
+		</dict>
+		<key>typepause</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>pause sequence in typed strings</string>
+					<key>match</key>
+					<string>\\\\!\d+</string>
+					<key>name</key>
+					<string>keyword.operator.bunch</string>
 				</dict>
 			</array>
 		</dict>

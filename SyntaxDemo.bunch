@@ -14,8 +14,12 @@ onoff: off
 /*
 TODO
 
-- checkbox arrays
-- conditions
+- [ ] conditions
+- [x] fix scripts
+
+- [ ] pipes to run in parallel, https://bunchapp.co/docs/bunch-files/scripts/shell-scripts/#order-of-execution
+- [ ] checkbox arrays
+- [ ] global variables
 
 */
 
@@ -55,7 +59,7 @@ var1 = some value
 var2 = ?"What should var2 contain"
 # variables can be assigned from a script
 var2 = * myscript.applescript
-var3 = $ myscript.sh
+var3 = $ myscript.sh ${var} "arg 2"
 # https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 var4 = ?[ First, Second, Third ] "Which one?"
 var5 = ?[
@@ -66,7 +70,7 @@ var5 = ?[
 var7 = ?{
     Marked => <coding.snippets#Marked
     Bunch => <coding.snippets#Bunch
-    nvUltra => <coding.snippets#nvUltra
+    nvUltra => <<#nvUltra
 } "Whatcha Coding?"
 
 
@@ -141,6 +145,38 @@ Default
 - 'kind:"affinity photo" tag:brettterpstra.com name:template' [~/Dropbox] !5
 
 /*
+https://bunchapp.co/docs/bunch-files/logic/
+
+Conditional Logic
+*/
+if (var_one is "Choice 1" OR var_one is "Choice 2")
+	var_two = "Project 1"
+	<<#Load Project
+else if var_one is "Choice 2"
+		if someother AND (fred OR george)
+			var_two = "Project 2"
+			Finder
+			- ~/tmp/mydir
+			<<#Load Project
+		else
+			<<#My Fragment
+		end
+else
+	<<#Load Default
+end
+if var_one is NOT "Choice 2"
+end
+
+if self is opening
+    var5 = ?[
+    	First
+		Second
+		Third
+	] "Which one?"
+end
+
+
+/*
 https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 
 Dialogs can be used to choose which app to run
@@ -207,12 +243,15 @@ Commands are enclosed in parenthesis and can have variables
 /*
 https://bunchapp.co/docs/bunch-files/scripts/
 https://bunchapp.co/docs/bunch-files/run-on-close/
+https://bunchapp.co/docs/bunch-files/delay/
 
 Lines starting with * run applescript inline or from a file
 Lines starting with & run Automator Workflows
-Lines starting with $ run shell scripts
+Lines starting with $ run shell scripts, which can have a (display) clause
 
 Script lines beginning with ! are run on close
+
+Append ~4 to delay the launch
 */
 * say "Bunch launched"
 * "Run This.scpt" "argument 1" "argument 2" ~5
@@ -223,10 +262,11 @@ Script lines beginning with ! are run on close
 & WorkflowWithVariables
 - variable1 = contents with = sign
 # shell scripts can have a display command at the end
-# and a pipe to run them in parallel
-|$ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d)
+$ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a:95% l:d) ~4
+| Safari
+| Messages
 # delay after display, i.e. voice says "hello 3" after waiting 2 seconds
-|!$ say hello ~3 (display) ~2
+!$ say hello ~3 (display) ~2
 # shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}
