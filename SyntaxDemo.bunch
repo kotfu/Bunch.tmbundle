@@ -43,7 +43,7 @@ ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
 var1 = some value
 # https://bunchapp.co/docs/bunch-files/interactivity/populating-variables/
-global var2 = ?"What should var2 contain"
+global var2 = ?"What should var2 ${var1} contain"
 # variables can be assigned from a script
 var2 = * myscript.applescript
 var3 = $ myscript.sh ${var} "arg 2"
