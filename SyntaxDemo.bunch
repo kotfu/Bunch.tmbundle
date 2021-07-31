@@ -48,7 +48,7 @@ global var2 = ?"What should var2 contain"
 var2 = * myscript.applescript
 var3 = $ myscript.sh ${var} "arg 2"
 # https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
-var4 = ?[ First, Second, Third ] "Which one?"
+var4 = ?[ First, Second, Third ] "Which ${some} one?"
 var5 = ?[
     First
     Second
