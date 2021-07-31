@@ -409,7 +409,7 @@
 								</dict>
 								<dict>
 									<key>include</key>
-									<string>#strings</string>
+									<string>#string</string>
 								</dict>
 								<dict>
 									<key>comment</key>
@@ -876,6 +876,10 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#string</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#comment</string>
 						</dict>
 					</array>
@@ -1241,21 +1245,67 @@
 				</dict>
 			</array>
 		</dict>
-		<key>strings</key>
+		<key>string</key>
 		<dict>
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.double.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>"(.*?)"</string>
-					<key>name</key>
-					<string>string.quoted.double.bunch</string>
+					<string>(")(.*?)(")</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>'(.*?)'</string>
-					<key>name</key>
-					<string>string.quoted.single.bunch</string>
+					<string>(')(.*?)(')</string>
 				</dict>
 			</array>
 		</dict>

@@ -133,14 +133,14 @@ Default
 # you can also use spotlight here
 # https://bunchapp.co/docs/bunch-files/spotlight-searches/
 - #Taxes #2020 [~/Dropbox/Receipts] !25
-- 'kind:"affinity photo" tag:brettterpstra.com name:template' [~/Dropbox] !5
+- 'kind:"affinity photo" tag:${tagname} name:template' [~/Dropbox] !5
 
 /*
 https://bunchapp.co/docs/bunch-files/logic/
 
 Conditional Logic
 */
-if (var_one is NOT "Choice NOT 1" OR !var_one == "Choice 2")
+if (var_one is NOT "Choice ${var} NOT 1" OR !var_one == "Choice 2")
 	var_two = "Project 1"
 	<<#Load Project
 else if $var_one is "Choice 2"
