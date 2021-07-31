@@ -41,7 +41,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#comments</string>
+			<string>#comment</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -148,7 +148,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#comments</string>
+							<string>#comment</string>
 						</dict>
 					</array>
 				</dict>
@@ -263,7 +263,7 @@
 			<key>match</key>
 			<string>^([|%!]*)(\()(.*)(\))</string>
 		</dict>
-		<key>comments</key>
+		<key>comment</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -860,7 +860,7 @@
 										</dict>
 										<dict>
 											<key>include</key>
-											<string>#comments</string>
+											<string>#comment</string>
 										</dict>
 									</array>
 								</dict>
@@ -876,7 +876,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#comments</string>
+							<string>#comment</string>
 						</dict>
 					</array>
 				</dict>
@@ -1005,7 +1005,7 @@
 											<key>match</key>
 											<string>.*</string>
 											<key>name</key>
-											<string>string.quoted.single.bunch</string>
+											<string>string.unquoted.bunch</string>
 										</dict>
 									</array>
 								</dict>
@@ -1017,7 +1017,7 @@
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#comments</string>
+							<string>#comment</string>
 						</dict>
 					</array>
 				</dict>
@@ -1090,7 +1090,7 @@
 							<key>comment</key>
 							<string>the default value</string>
 							<key>name</key>
-							<string>string.quoted.single.bunch</string>
+							<string>string.unquoted.bunch</string>
 						</dict>
 					</dict>
 					<key>comment</key>
@@ -1120,7 +1120,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>string.quoted.single.bunch</string>
+							<string>string.unquoted.bunch</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1156,7 +1156,7 @@
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>string.quoted.single.bunch</string>
+							<string>string.unquoted.bunch</string>
 							<key>patterns</key>
 							<array>
 								<dict>
