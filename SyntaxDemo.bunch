@@ -133,6 +133,28 @@ Default
 - #Taxes #2020 [~/Dropbox/Receipts] !25
 - 'kind:"affinity photo" tag:brettterpstra.com name:template' [~/Dropbox] !5
 
+/*
+https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
+
+Dialogs can be used to choose which app to run
+*/
+othertaskmgr = 'Todoist';
+?[Omnifocus, Things, TaskPaper] "Which Task Manager?"
+?[
+    Omnifocus
+    Things
+    TaskPaper
+] "Which Task Manager?"
+# or to load a snippet
+?{ Marked => <coding.snippets#Marked, Bunch => <coding.snippets#Bunch } "Whatcha Coding ${somevar}?" 
+?{ Marked => <coding.snippets#Marked, Bunch => <coding.snippets#Bunch }
+Safari
+?{
+	Marked => <coding.snippets#Marked
+    Bunch => <coding.snippets#Bunch
+    nvUltra => <coding.snippets#nvUltra
+} "Whatcha Coding?"
+Safari
 
 /*
 https://bunchapp.co/docs/bunch-files/opening-web-pages/

@@ -43,7 +43,15 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#dialog</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#frontmatter</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#fragment</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -165,7 +173,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#dialogs</string>
+							<string>#dialog</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -235,10 +243,6 @@
 					<string>normal assignment</string>
 					<key>match</key>
 					<string>^(\w+)\s*(=)\s*(.*)$</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#dialogs</string>
 				</dict>
 			</array>
 		</dict>
@@ -365,7 +369,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>dialogs</key>
+		<key>dialog</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -398,9 +402,9 @@
 					<key>comment</key>
 					<string>prompt for text input</string>
 					<key>match</key>
-					<string>(\?\")(.*)(\")</string>
+					<string>(\?\")(.*)(\")\s*</string>
 					<key>name</key>
-					<string>meta.dialog.array.bunch</string>
+					<string>meta.dialog.text.bunch</string>
 				</dict>
 				<dict>
 					<key>begin</key>
@@ -416,7 +420,7 @@
 					<key>comment</key>
 					<string>single-line or multi-line query arrays</string>
 					<key>end</key>
-					<string>(\])\s*(")(.*?)(")?\s*$</string>
+					<string>(\])\s*((")(.*?)("))?\s*$</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -424,12 +428,12 @@
 							<key>name</key>
 							<string>keyword.operator.dialog.bunch</string>
 						</dict>
-						<key>2</key>
+						<key>3</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.operator.dialog.bunch</string>
 						</dict>
-						<key>3</key>
+						<key>4</key>
 						<dict>
 							<key>name</key>
 							<string>string.quoted.double.bunch</string>
@@ -441,7 +445,7 @@
 								</dict>
 							</array>
 						</dict>
-						<key>4</key>
+						<key>5</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.operator.dialog.bunch</string>
@@ -452,6 +456,12 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<dict>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
@@ -459,15 +469,24 @@
 									<key>name</key>
 									<string>string.quoted.single.bunch</string>
 								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.dialog.bunch</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#snippet</string>
+										</dict>
+									</array>
+								</dict>
 							</dict>
 							<key>match</key>
-							<string>\s*([^,]+?)\s*</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\s*(,)\s*</string>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
+							<string>\s*((?!,|\n|\]).*?)(?=(,|\n|\]))</string>
 						</dict>
 					</array>
 				</dict>
@@ -485,7 +504,7 @@
 					<key>comment</key>
 					<string>single-line or multi-line query dictionariess</string>
 					<key>end</key>
-					<string>(\})\s*(")(.*?)(")?\s*$</string>
+					<string>(\})\s*((")(.*?)("))?\s*$</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -493,12 +512,12 @@
 							<key>name</key>
 							<string>keyword.operator.dialog.bunch</string>
 						</dict>
-						<key>2</key>
+						<key>3</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.operator.dialog.bunch</string>
 						</dict>
-						<key>3</key>
+						<key>4</key>
 						<dict>
 							<key>name</key>
 							<string>string.quoted.double.bunch</string>
@@ -510,7 +529,7 @@
 								</dict>
 							</array>
 						</dict>
-						<key>4</key>
+						<key>5</key>
 						<dict>
 							<key>name</key>
 							<string>keyword.operator.dialog.bunch</string>
@@ -521,6 +540,12 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>,</string>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<dict>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
@@ -528,15 +553,24 @@
 									<key>name</key>
 									<string>string.quoted.single.bunch</string>
 								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.dialog.bunch</string>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#snippet</string>
+										</dict>
+									</array>
+								</dict>
 							</dict>
 							<key>match</key>
-							<string>\s*([^,]+?)\s*</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>\s*(=&gt;)\s*</string>
-							<key>name</key>
-							<string>keyword.operator.bunch</string>
+							<string>\s*((?!,|\n|\}).*?)\s*(=&gt;)\s*(.*?)(?=(,|\n|\}))</string>
 						</dict>
 					</array>
 				</dict>
@@ -693,6 +727,28 @@
 			<string>files and file like lines that start with a -</string>
 			<key>match</key>
 			<string>^(-&gt;?)\s(.*)</string>
+		</dict>
+		<key>fragment</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>comment</key>
+					<string>the marker that separates embedded snippets from the rest of the file</string>
+					<key>match</key>
+					<string>^___$</string>
+					<key>name</key>
+					<string>keyword.operator.startembeddedsnippet.bunch</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>fragment header</string>
+					<key>match</key>
+					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)([^\]]+)(\])(.*$)</string>
+					<key>name</key>
+					<string>entity.name.section</string>
+				</dict>
+			</array>
 		</dict>
 		<key>frontmatter</key>
 		<dict>
@@ -875,18 +931,14 @@
 								</dict>
 							</array>
 						</dict>
-						<key>6</key>
+						<key>7</key>
 						<dict>
 							<key>comment</key>
 							<string>the dialog phrase</string>
 							<key>name</key>
-							<string>entity.name.section</string>
+							<string>string.quoted.double.bunch</string>
 							<key>patterns</key>
 							<array>
-								<dict>
-									<key>include</key>
-									<string>#dialogs</string>
-								</dict>
 								<dict>
 									<key>include</key>
 									<string>#variable</string>
@@ -902,23 +954,7 @@
 					<key>comment</key>
 					<string>match the lines that insert or call a snippet</string>
 					<key>match</key>
-					<string>^( {4}|\t)?(!)?(&lt;&lt;?)(\s*)(.+?)((\?".*")|(\s~\d+))$</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>the marker that separates embedded snippets from the rest of the file</string>
-					<key>match</key>
-					<string>^___$</string>
-					<key>name</key>
-					<string>keyword.operator.startembeddedsnippet.bunch</string>
-				</dict>
-				<dict>
-					<key>comment</key>
-					<string>fragment header</string>
-					<key>match</key>
-					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)([^\]]+)(\])(.*$)</string>
-					<key>name</key>
-					<string>entity.name.section</string>
+					<string>( {4}|\t)?(!)?(&lt;&lt;?)(\s*)([^?~]+)((\?".*")|(~\d+))?</string>
 				</dict>
 			</array>
 		</dict>
