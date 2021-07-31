@@ -703,6 +703,102 @@
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>comment</key>
+							<string>the file name</string>
+							<key>name</key>
+							<string>entity.name.function</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.double.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>dialogs from external files</string>
+					<key>match</key>
+					<string>(\?\&lt;)\s*(.*?)\s*((")(.*?)("))?\s*$</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>string.quoted.single.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.dialog.bunch</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>comment</key>
+							<string>snippet, but we dont include it because there are many snippet options that arent valid here</string>
+							<key>name</key>
+							<string>entity.name.section</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>comment</key>
+							<string>this is an app, but we dont include #appurl because there are many otpions which are not valid here</string>
+							<key>name</key>
+							<string>entity.name.function.app.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>checkbox array lines</string>
+					<key>match</key>
+					<string>^(-\[(?:x| |)\])\s+(.*?)(?:\s+(=&gt;)\s+(?:(&lt;&lt;.*?)|(.*?)))?$</string>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>horizontal rule to separate multiple sets of checkboxes</string>
+					<key>match</key>
+					<string>^---$</string>
+					<key>name</key>
+					<string>keyword.operator.separatecheckboxes.bunch</string>
+				</dict>
 			</array>
 		</dict>
 		<key>file</key>

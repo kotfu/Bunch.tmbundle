@@ -16,8 +16,10 @@ TODO
 - [x] conditions
 - [x] fix scripts
 - [x] pipes to run in parallel
-- [ ] checkbox arrays
+- [x] checkbox arrays
 - [x] global variables
+- [x] dialogs from external files: https://bunchapp.co/docs/bunch-files/interactivity/external-files
+- [ ] check if we still need stand-alone named delay pattern
 
 */
 
@@ -70,7 +72,9 @@ var7 = ?{
     Bunch => <coding.snippets#Bunch
     nvUltra => <<#nvUltra
 } "Whatcha Coding?"
-
+# https://bunchapp.co/docs/bunch-files/interactivity/external-files/
+var8 = ?< scripts/Menu Source.json "Pick your ${thevar} Poison"
+var9 = ?<scripts/${somedir}/myfile.yaml
 
 /*
 https://bunchapp.co/docs/bunch-files/apps/
@@ -201,6 +205,20 @@ Safari
     nvUltra => <coding.snippets#nvUltra
 } "Whatcha Coding?"
 Safari
+
+# checkbox dialogs
+-[x] Option 1 => <<#One
+-[x] Option 2 => Drafts
+-[] Option 3 => <<#Three
+---
+-[ ] Option 3 => <<#Three
+-[x] Omnifocus
+-[] iA Writer
+-[ ] Spark
+
+# dialogs can be loaded from a file
+?< scripts/Menu Source.json "Pick your ${thevar} Poison"
+?<scripts/${somedir}/myfile.yaml
 
 /*
 https://bunchapp.co/docs/bunch-files/opening-web-pages/
