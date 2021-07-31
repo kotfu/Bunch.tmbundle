@@ -11,6 +11,13 @@ varfromscript: $ echo thevalue
 website: https://bunchapp.co
 onoff: off
 ---
+/*
+TODO
+
+- checkbox arrays
+- conditions
+
+*/
 
 /*
 https://bunchapp.co/docs/bunch-files/frontmatter/
@@ -40,7 +47,7 @@ Variables can be used nearly anywhere
 ${website}
 %{urlencoded}
 ${srcdir/raw}
-# variables can have a default value
+# variables can have a default value, useful in snippets and fragments
 ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
 var1 = some value
@@ -242,8 +249,8 @@ https://bunchapp.co/docs/bunch-files/snippets/
 
 # start marker for an embedded snippet
 ___
-// these should all be section headers, have to have 2 dashes, or one
-// of = > # followed by a [
+// these should all be fragment headerss; have to have 2 dashes or one
+// of = > #, followed by a [
 ###[Fragment Name]
 # [ Fragment ] #########
 -------[My Fragment]-----------
@@ -252,5 +259,3 @@ ___
 >>>[Some Fragment]
 =[Fragment]== Add a comment, if you like
 >-=# [My Fragment] #=-<
-
-

@@ -38,6 +38,14 @@
 			<string>#snippet</string>
 		</dict>
 		<dict>
+			<key>comment</key>
+			<string>fragments before comments too</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#fragment</string>
+		</dict>
+		<dict>
 			<key>include</key>
 			<string>#comments</string>
 		</dict>
@@ -48,10 +56,6 @@
 		<dict>
 			<key>include</key>
 			<string>#frontmatter</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#fragment</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -741,12 +745,38 @@
 					<string>keyword.operator.startembeddedsnippet.bunch</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.section</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>keyword</string>
+						</dict>
+						<key>5</key>
+						<dict>
+							<key>name</key>
+							<string>keyword</string>
+						</dict>
+					</dict>
 					<key>comment</key>
 					<string>fragment header</string>
 					<key>match</key>
-					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)([^\]]+)(\])(.*$)</string>
-					<key>name</key>
-					<string>entity.name.section</string>
+					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)([^\]]+)(\])(.*\s*$)</string>
 				</dict>
 			</array>
 		</dict>
@@ -910,12 +940,12 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.operator.script.bunch</string>
+							<string>keyword.operator.bunch</string>
 						</dict>
 						<key>3</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.section</string>
+							<string>keyword.operator.bunch</string>
 						</dict>
 						<key>5</key>
 						<dict>
