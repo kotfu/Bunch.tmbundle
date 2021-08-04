@@ -7,7 +7,7 @@
 	<key>contactName</key>
 	<string>Kotfu</string>
 	<key>description</key>
-	<string>A TextMate bundle for Bunch (https://bunchapp.co) on macOS.
+	<string>A TextMate bundle for editing Bunch (https://bunchapp.co) files.
 </string>
 	<key>name</key>
 	<string>Bunch</string>

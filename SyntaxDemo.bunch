@@ -33,9 +33,7 @@ TODO
 -[x] autocomplete snippet files
 -[ ] autocomplete fragment ids from a snippet
 
--[ ] variable completion for ${} and %{}
--[ ] can we do command completion on the variable transformation ie raw in ${myvar/raw}
--[ ] completion for variable transformations
+-[ ] completion on variable transformations ie raw in ${myvar/raw}
 
 -[X] make sure Comment Line and Comment Start Block commands work
 -[ ] figure out how to set the default indenting to soft tabs of size 4

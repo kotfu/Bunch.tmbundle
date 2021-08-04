@@ -1063,24 +1063,32 @@
 							<key>name</key>
 							<string>variable.parameter</string>
 						</dict>
-						<key>4</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.other</string>
-						</dict>
 						<key>5</key>
 						<dict>
 							<key>comment</key>
 							<string>the slash before a transformation</string>
 							<key>name</key>
-							<string>keyword.other</string>
+							<string>keyword.other.variable.transformation.bunch</string>
 						</dict>
 						<key>6</key>
 						<dict>
 							<key>comment</key>
 							<string>the transformation, i.e. url, shell, raw</string>
-							<key>name</key>
-							<string>variable.language.transformation.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>match</key>
+									<string>(raw|shell|typed|url)</string>
+									<key>name</key>
+									<string>variable.language.transformation.bunch</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>.*</string>
+									<key>name</key>
+									<string>invalid</string>
+								</dict>
+							</array>
 						</dict>
 						<key>8</key>
 						<dict>
@@ -1100,7 +1108,7 @@
 					<key>comment</key>
 					<string>variable references with their various incantations and transformations</string>
 					<key>match</key>
-					<string>([\$%]\{)(\w+)(((/)(raw|shell|typed|url))|((:)(.*)))?(\})</string>
+					<string>([\$%]\{)(\w+)?(((/)(.*))|((:)(.*)))?(\})</string>
 				</dict>
 			</array>
 		</dict>
