@@ -7,9 +7,46 @@ open at: 10am
 frontvar: Some new value
 srcdir: ~/src/myproject
 varfromscript: $ echo thevalue
-website: https://bunchapp.co
+website: close after:https://bunchapp.co
 onoff: off
+somevar: 
 ---
+/*
+TODO
+-[ ] figure out how scope selectors work
+-[ ] figure out how to get this command into App Completions, i.e. how to do embedded quotes
+
+-[ ] validate syntax highlighting and completion for frontmatter keys matches against documentation
+
+-[ ] idea for Brett, a url scheme to validate the syntax of a file
+
+-[ ] make a drag command so you can drag a snippet in and it will create a reference
+     to the snippet
+
+-[ ] display snippet
+
+-[x] frontmatter completion
+-[ ] get all valid commands for Command Completions
+-[x] autocomplete embedded fragment ids - can we get the text of the whole document in a shell variable?
+-[ ] autocomplete snippet files
+-[ ] autocomplete fragment ids from another snippet
+
+-[ ] variable completion for ${} and %{}
+-[ ] can we do command completion on the variable transformation ie raw in ${myvar/raw}
+-[ ] completion for variable transformations
+
+-[X] make sure Comment Line and Comment Start Block commands work
+-[ ] figure out how to set the default indenting to soft tabs of size 4
+
+-[ ] for commands, I had to make the parenthesis as punctionation. scope in order to make
+     autocomplete work, but now they aren't styled properly. figure out if I can have both,
+     maybe using a syntax like frontmatter, where the whole patterns has a name of entity.function.type.command.bunch
+     which will pick up the styling, but then within that we have a match for meta.command which is what
+     gets autocompleted
+
+*/
+# /usr/bin/mdfind \'kMDItemContentType = "com.apple.application-bundle" && kMDItemDisplayName = "*.app"cd\' | sed -E \'s|.*/([^/]+).app|\1|\' | sort
+
 /*
 https://bunchapp.co/docs/bunch-files/frontmatter/
 
@@ -35,9 +72,11 @@ passed in via the URL handler
 
 Variables can be used nearly anywhere
 */
+
 ${website}
 %{urlencoded}
 ${srcdir/raw}
+${fred}
 # variables can have a default value, useful in snippets and fragments
 ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
@@ -111,6 +150,7 @@ SomeOther.bunch
 # with frontmatter variables
 - sequence=true 
 
+
 Tower
 # open files by starting a line with a -
 - ${srcdir}/myproj
@@ -139,7 +179,7 @@ Default
 https://bunchapp.co/docs/bunch-files/logic/
 
 Conditional Logic
-*/
+*/		
 if (var_one is NOT "Choice ${var} NOT 1" OR !var_one == "Choice 2")
 	var_two = "Project 1"
 	<<#Load Project
@@ -149,6 +189,9 @@ else if $var_one is "Choice 2"
 			Finder
 			- ~/tmp/mydir
 			# a waiting snippet
+			/*
+			stuff here
+			*/
 			Messages
 				<<#Load Project
 		else if weekday is after friday
@@ -170,6 +213,7 @@ if self is opening
 	] "Which one?"
 end
 
+() 
 
 /*
 https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
@@ -234,7 +278,6 @@ Messages
 - (pause 3)
 - [Mom tab Hi Mom! return \\!5${longermessage/typed} return]
 
-
 /* 
 https://bunchapp.co/docs/bunch-files/commands/
 
@@ -282,13 +325,19 @@ $ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}
 
+
 /*
 https://bunchapp.co/docs/bunch-files/snippets/
 
 */
-<snippet#Fragment Name
+<Comms.snippet
+<
+<MySnip.snippet
+<MySnip.snippet#Fragment Name
 - withvariable = thevalue
-<<#embedded ~5
+<<
+<<#My Fragment
+<<#embedded fragment name ~5
 # snippet composed of variables
 !<${snipvar}#${section}
 # a snippet that waits for all the other apps to load before running
@@ -297,6 +346,8 @@ https://bunchapp.co/docs/bunch-files/snippets/
 <Comms.bunch ~5
 # https://bunchapp.co/docs/bunch-files/interactivity/optional-snippets/
 !<Comms.bunch#Social Media ?"Fly into the ${somevar} time-shifting vortex?"
+# this isn't interpreted as anything and therefore shouldn't get a scope
+<<Snippet
 
 # start marker for an embedded snippet
 ___

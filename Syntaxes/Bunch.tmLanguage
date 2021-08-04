@@ -156,7 +156,7 @@
 			<key>comment</key>
 			<string>match applications with modifiers, and urls</string>
 			<key>match</key>
-			<string>(!{1,3})?([|@%]*)\s*(\w.*)</string>
+			<string>^(?: {4}|\t)*(!{1,3})?([|@%]*)\s*(\w.*)</string>
 		</dict>
 		<key>assignment</key>
 		<dict>
@@ -238,12 +238,12 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.function</string>
+					<string>punctuation.storage.type.function.command.bunch</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.function</string>
+					<string>storage.type.function.command.bunch</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -255,7 +255,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>storage.type.function</string>
+					<string>punctuation.storage.type.function.command.bunch</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -934,7 +934,7 @@
 					<key>comment</key>
 					<string>fragment header</string>
 					<key>match</key>
-					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)([^\]]+)(\])(.*\s*$)</string>
+					<string>^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)\s*([^\]]+?)\s*(\])(.*\s*$)</string>
 				</dict>
 			</array>
 		</dict>
@@ -1080,7 +1080,7 @@
 							<key>comment</key>
 							<string>the transformation, i.e. url, shell, raw</string>
 							<key>name</key>
-							<string>variable.language</string>
+							<string>variable.language.transformation.bunch</string>
 						</dict>
 						<key>8</key>
 						<dict>
@@ -1100,7 +1100,7 @@
 					<key>comment</key>
 					<string>variable references with their various incantations and transformations</string>
 					<key>match</key>
-					<string>([\$%]\{)(\w+)(((/)(url|shell|raw|typed))|((:)(.*)))?(\})</string>
+					<string>([\$%]\{)(\w+)(((/)(raw|shell|typed|url))|((:)(.*)))?(\})</string>
 				</dict>
 			</array>
 		</dict>
@@ -1189,8 +1189,29 @@
 		</dict>
 		<key>snippet</key>
 		<dict>
+			<key>comment</key>
+			<string>the order of these patterns is important</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>embedded snippet without a fragment</string>
+					<key>match</key>
+					<string>^( {4}|\t)?(!)?(&lt;&lt;)\s*$</string>
+				</dict>
 				<dict>
 					<key>captures</key>
 					<dict>
@@ -1207,9 +1228,9 @@
 						<key>5</key>
 						<dict>
 							<key>comment</key>
-							<string>the name of the snippet file and the fragment, if present</string>
+							<string>the name of the embedded fragment, if present</string>
 							<key>name</key>
-							<string>entity.name.section</string>
+							<string>entity.name.section.fragment.embedded.bunch</string>
 							<key>patterns</key>
 							<array>
 								<dict>
@@ -1239,9 +1260,82 @@
 						</dict>
 					</dict>
 					<key>comment</key>
-					<string>match the lines that insert or call a snippet</string>
+					<string>embedded snippets with a fragment</string>
 					<key>match</key>
-					<string>( {4}|\t)?(!)?(&lt;&lt;?)(\s*)([^?~]+)((\?".*")|(~\d+))?</string>
+					<string>^( {4}|\t)?(!)?(&lt;&lt;#)(\s*)([^?~&lt;#]+)((\?".*")|(~\d+))?</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>10</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.delay.bunch</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>comment</key>
+							<string>the name of the snippet file</string>
+							<key>name</key>
+							<string>entity.name.section.snippetfile.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>6</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.bunch</string>
+						</dict>
+						<key>7</key>
+						<dict>
+							<key>comment</key>
+							<string>the fragment name, if present</string>
+							<key>name</key>
+							<string>entity.name.section.fragment.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+						<key>9</key>
+						<dict>
+							<key>comment</key>
+							<string>the dialog phrase</string>
+							<key>name</key>
+							<string>string.quoted.double.bunch</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#interpolation</string>
+								</dict>
+							</array>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>a snippet with a file and a fragment</string>
+					<key>disabled</key>
+					<integer>0</integer>
+					<key>match</key>
+					<string>^( {4}|\t)?(!)?(&lt;)\s*([^?~&lt;#]+)((#)([^?~&lt;#]+))?((\?".*")|(~\d+))?</string>
 				</dict>
 			</array>
 		</dict>
