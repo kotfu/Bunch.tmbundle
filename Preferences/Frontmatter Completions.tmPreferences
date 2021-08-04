@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Frontmatter Completions</string>
+	<key>scope</key>
+	<string>source.bunch meta.frontmatter.bunch</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>close after:</string>
+			<string>close at:</string>
+			<string>close on:</string>
+			<string>from file:</string>
+			<string>from script:</string>
+			<string>ignores state: false</string>
+			<string>ignores state: true</string>
+			<string>menu divider: after</string>
+			<string>menu divider: before</string>
+			<string>menu order:</string>
+			<string>only opens: false</string>
+			<string>only opens: true</string>
+			<string>open at:</string>
+			<string>open every:</string>
+			<string>open on:</string>
+			<string>quits apps: always</string>
+			<string>run after:</string>
+			<string>run after close:</string>
+			<string>run before:</string>
+			<string>run before close:</string>
+			<string>schedule if:</string>
+			<string>schedule unless:</string>
+			<string>sequence: parallel</string>
+			<string>sequence: sequential</string>
+			<string>shortcut:</string>
+			<string>single bunch mode: ignore</string>
+			<string>startup: ask</string>
+			<string>startup: false</string>
+			<string>startup: true</string>
+			<string>title:</string>
+			<string>toggles: false</string>
+			<string>toggles: true</string>
+		</array>
+		<key>disableDefaultCompletion</key>
+		<integer>1</integer>
+	</dict>
+	<key>uuid</key>
+	<string>2994E6CE-72A7-4234-A021-580276FE56BF</string>
+</dict>
+</plist>
