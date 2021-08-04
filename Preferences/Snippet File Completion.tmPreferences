@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Snippet File Completion</string>
+	<key>scope</key>
+	<string>source.bunch entity.name.section.snippetfile.bunch</string>
+	<key>settings</key>
+	<dict>
+		<key>completionCommand</key>
+		<string>snippet_file_completer.rb</string>
+		<key>disableDefaultCompletion</key>
+		<integer>1</integer>
+	</dict>
+	<key>uuid</key>
+	<string>CFB68C2A-6C0E-4589-93F3-5C368634222B</string>
+</dict>
+</plist>
