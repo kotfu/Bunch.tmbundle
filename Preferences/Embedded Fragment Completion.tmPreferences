@@ -9,36 +9,7 @@
 	<key>settings</key>
 	<dict>
 		<key>completionCommand</key>
-		<string>ruby18 &lt;&lt;-'RUBY'
-	fragment_header_regex = /^((?:-{2,}|[=&gt;#])[\-=&gt;# ]*)(\[)\s*([^\]]+?)\s*(\])/
-	start_regex = /^___$/
-
-	fragment_names = Array.new
-	havestart = false
-	complete = ENV["TM_CURRENT_WORD"]
-
-	IO.foreach(ENV["TM_FILEPATH"]) do |line|
-	  line.chomp!
-	  if line =~ start_regex
-	    havestart = true
-	  end
-	  if havestart
-	    matchdata = fragment_header_regex.match(line)
-	    if matchdata
-	      # the third capture group is the fragment id
-	      if matchdata[3].length &gt; complete.length
-		    if matchdata[3][0,complete.length] == complete
-			  if not fragment_names.include? matchdata[3]
-  	            # dont add duplicates
-  	            fragment_names.push matchdata[3]
-  	          end
-	  	    end
-	      end		  
-	    end
-	  end
-	end
-	puts fragment_names.sort!
-RUBY</string>
+		<string>embedded_fragment_completer.rb</string>
 		<key>disableDefaultCompletion</key>
 		<integer>1</integer>
 	</dict>
