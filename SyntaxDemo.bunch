@@ -14,7 +14,7 @@ somevar:
 /*
 TODO
 -[ ] figure out how scope selectors work
--[ ] figure out how to get this command into App Completions, i.e. how to do embedded quotes
+-[X] figure out how to do App Completions
 
 -[ ] validate syntax highlighting and completion for frontmatter keys matches against documentation
 
@@ -27,9 +27,11 @@ TODO
 
 -[x] frontmatter completion
 -[ ] get all valid commands for Command Completions
--[x] autocomplete embedded fragment ids - can we get the text of the whole document in a shell variable?
--[ ] autocomplete snippet files
--[ ] autocomplete fragment ids from another snippet
+-[x] autocomplete embedded fragment ids
+-[ ] embedded fragment completion doesn't work inside of a dictionary
+
+-[x] autocomplete snippet files
+-[ ] autocomplete fragment ids from a snippet
 
 -[ ] variable completion for ${} and %{}
 -[ ] can we do command completion on the variable transformation ie raw in ${myvar/raw}
@@ -45,7 +47,6 @@ TODO
      gets autocompleted
 
 */
-# /usr/bin/mdfind \'kMDItemContentType = "com.apple.application-bundle" && kMDItemDisplayName = "*.app"cd\' | sed -E \'s|.*/([^/]+).app|\1|\' | sort
 
 /*
 https://bunchapp.co/docs/bunch-files/frontmatter/
@@ -122,7 +123,6 @@ Messages
 # optionally add a delay in case other apps launching ahead of it
 # are really slow
 @Copy 'Em ~5 # comments ~5
-
 
 # attempt to hide app after launching
 # pipe to ask for parallel execution
@@ -240,7 +240,7 @@ Safari
 
 # checkbox dialogs
 -[x] Option 1 => <<#One
--[x] Option 2 => Drafts
+-[x] Option 2 => 
 -[] Option 3 => <<#Three
 ---
 -[ ] Option 3 => <<#Three
@@ -260,6 +260,7 @@ default browser. URL schemes also work.
 
 Prefix with a browser name and a colon to open in a specific browser
 */
+
 Safari
 - https://www.duckduckgo.com
 

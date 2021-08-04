@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>App Completions</string>
+	<key>scope</key>
+	<string>source.bunch entity.name.function.app.bunch</string>
+	<key>settings</key>
+	<dict>
+		<key>completionCommand</key>
+		<string>/usr/bin/mdfind 'kMDItemContentType = "com.apple.application-bundle" &amp;&amp; kMDItemDisplayName = "*.app"cd' | sed -E 's|.*/([^/]+).app|\1|' | sort</string>
+		<key>disableDefaultCompletion</key>
+		<integer>1</integer>
+	</dict>
+	<key>uuid</key>
+	<string>775E2042-B40B-4DD4-ACF8-E04FE38E6937</string>
+</dict>
+</plist>
