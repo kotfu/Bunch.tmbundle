@@ -13,15 +13,9 @@ somevar:
 ---
 /*
 TODO
--[ ] figure out how scope selectors work
 -[X] figure out how to do App Completions
 
--[ ] validate syntax highlighting and completion for frontmatter keys matches against documentation
-
 -[ ] idea for Brett, a url scheme to validate the syntax of a file
-
--[ ] make a drag command so you can drag a snippet in and it will create a reference
-     to the snippet
 
 -[ ] display snippet
 
@@ -210,8 +204,6 @@ if self is opening
 		Third
 	] "Which one?"
 end
-
-() 
 
 /*
 https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
