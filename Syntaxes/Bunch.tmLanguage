@@ -230,17 +230,17 @@
 		<dict>
 			<key>captures</key>
 			<dict>
-				<key>1</key>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.operator.bunch</string>
 				</dict>
-				<key>2</key>
+				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.storage.type.function.command.bunch</string>
+					<string>keyword.operator.command.bunch</string>
 				</dict>
-				<key>3</key>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>storage.type.function.command.bunch</string>
@@ -252,16 +252,16 @@
 						</dict>
 					</array>
 				</dict>
-				<key>4</key>
+				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.storage.type.function.command.bunch</string>
+					<string>keyword.operator.command.bunch</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>match commands like (dark mode off)</string>
 			<key>match</key>
-			<string>^([|%!]*)(\()(.*)(\))</string>
+			<string>^( {4}|\t)*([|%!]*)(\()(.*?)(\))</string>
 		</dict>
 		<key>comment</key>
 		<dict>
@@ -758,12 +758,35 @@
 							<string>storage.modifier.default.bunch</string>
 						</dict>
 						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.command.bunch</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>storage.type.function.command.bunch</string>
+									<key>patterns</key>
+									<array>
+										<dict>
+											<key>include</key>
+											<string>#interpolation</string>
+										</dict>
+									</array>
+								</dict>
+								<key>3</key>
+								<dict>
+									<key>name</key>
+									<string>keyword.operator.command.bunch</string>
+								</dict>
+							</dict>
 							<key>comment</key>
 							<string>a special command only available on a file line</string>
 							<key>match</key>
-							<string>\((pause|delay) \d+\)</string>
-							<key>name</key>
-							<string>storage.type.function</string>
+							<string>(\()(pause|delay) \d+(\))</string>
 						</dict>
 						<dict>
 							<key>captures</key>

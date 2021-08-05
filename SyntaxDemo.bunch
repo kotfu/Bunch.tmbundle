@@ -13,14 +13,14 @@ somevar:
 ---
 /*
 TODO
--[X] figure out how to do App Completions
+-[x] figure out how to do App Completions
 
 -[ ] idea for Brett, a url scheme to validate the syntax of a file
 
 -[ ] display snippet
 
 -[x] frontmatter completion
--[ ] get all valid commands for Command Completions
+-[x] get all valid commands for Command Completions
 -[x] autocomplete embedded fragment ids
 -[ ] embedded fragment completion doesn't work inside of a dictionary
 
@@ -31,12 +31,6 @@ TODO
 
 -[X] make sure Comment Line and Comment Start Block commands work
 -[ ] figure out how to set the default indenting to soft tabs of size 4
-
--[ ] for commands, I had to make the parenthesis as punctionation. scope in order to make
-     autocomplete work, but now they aren't styled properly. figure out if I can have both,
-     maybe using a syntax like frontmatter, where the whole patterns has a name of entity.function.type.command.bunch
-     which will pick up the styling, but then within that we have a match for meta.command which is what
-     gets autocompleted
 
 */
 
@@ -281,7 +275,6 @@ Commands are enclosed in parenthesis and can have variables
 !(do not disturb ${onoff/raw} ${onoff}) // comments
 # avoid reversing action when closing the bunch
 %(show dock)
-
 
 /*
 https://bunchapp.co/docs/bunch-files/scripts/

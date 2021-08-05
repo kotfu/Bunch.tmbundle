@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Command Completions</string>
+	<key>scope</key>
+	<string>source.bunch keyword.operator.command.bunch</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>audio </string>
+			<string>audio input </string>
+			<string>audio input mute</string>
+			<string>audio input volume </string>
+			<string>audio output </string>
+			<string>audio output mute</string>
+			<string>audio output volume </string>
+			<string>audio volume </string>
+			<string>dark mode</string>
+			<string>dark mode off</string>
+			<string>dark mode on</string>
+			<string>light mode</string>
+			<string>screen </string>
+			<string>awake</string>
+			<string>sleep</string>
+			<string>sleep display</string>
+			<string>sleep screensaver</string>
+			<string>hide dock</string>
+			<string>show dock</string>
+			<string>dock left</string>
+			<string>dock bottom</string>
+			<string>dock right</string>
+			<string>hide menu bar</string>
+			<string>show menu bar</string>
+			<string>show desktop</string>
+			<string>hide desktop</string>
+			<string>display</string>
+			<string>do not disturb</string>
+			<string>do not disturb on</string>
+			<string>do not disturb off</string>
+			<string>dnd</string>
+			<string>dnd on</string>
+			<string>dnd off</string>
+			<string>input source </string>
+			<string>log </string>
+			<string>notify</string>
+			<string>wallpaper </string>
+		</array>
+		<key>disableDefaultCompletion</key>
+		<integer>1</integer>
+	</dict>
+	<key>uuid</key>
+	<string>E7365C96-A243-4C5E-A2BE-756B22A599C0</string>
+</dict>
+</plist>
