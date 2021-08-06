@@ -32,6 +32,9 @@ TODO
 -[X] make sure Comment Line and Comment Start Block commands work
 -[ ] figure out how to set the default indenting to soft tabs of size 4
 
+-[ ] learn more about building snippets, and using snippets, particularly those with multiple arguments and names/options for those arguments
+-[ ] finish dialog snippet, how can I insert snippet stuff after the autoinserted closing bracket?
+
 */
 
 /*
@@ -136,7 +139,6 @@ SomeOther.bunch
 # with frontmatter variables
 - sequence=true 
 
-
 Tower
 # open files by starting a line with a -
 - ${srcdir}/myproj
@@ -165,7 +167,8 @@ Default
 https://bunchapp.co/docs/bunch-files/logic/
 
 Conditional Logic
-*/		
+*/
+
 if (var_one is NOT "Choice ${var} NOT 1" OR !var_one == "Choice 2")
 	var_two = "Project 1"
 	<<#Load Project
@@ -205,7 +208,7 @@ https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 Dialogs can be used to choose which app to run
 */
 othertaskmgr = 'Todoist';
-?[Omnifocus, Things, TaskPaper] "Which Task Manager?"
+?[ Omnifocus, Things, TaskPaper ] "Which Task Manager?"
 ?[
     Omnifocus
     Things
