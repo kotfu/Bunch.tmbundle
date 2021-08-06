@@ -32,9 +32,8 @@ TODO
 -[X] make sure Comment Line and Comment Start Block commands work
 -[ ] figure out how to set the default indenting to soft tabs of size 4
 
--[ ] learn more about building snippets, and using snippets, particularly those with multiple arguments and names/options for those arguments
 -[ ] finish dialog snippet, how can I insert snippet stuff after the autoinserted closing bracket?
-
+-[ ] add audio device completion using system_profiler SPAudioDataType -xml | xmllint --xpath
 */
 
 /*
@@ -97,7 +96,7 @@ https://bunchapp.co/docs/bunch-files/apps/
 
 Apps and files
 */
-
+(audio  device_name|volume X|mute|unmute
 # hide all visible apps (use at top of bunch)
 @@
 
