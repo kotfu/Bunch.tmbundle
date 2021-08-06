@@ -238,7 +238,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.command.bunch</string>
+					<string>keyword.operator.command.left.bunch</string>
 				</dict>
 				<key>4</key>
 				<dict>
@@ -255,7 +255,7 @@
 				<key>5</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.operator.command.bunch</string>
+					<string>keyword.operator.command.right.bunch</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -1074,12 +1074,12 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>variable.language</string>
+							<string>variable.language.interpolation.left.bunch</string>
 						</dict>
 						<key>10</key>
 						<dict>
 							<key>name</key>
-							<string>variable.language</string>
+							<string>variable.language.interpolation.right.bunch</string>
 						</dict>
 						<key>2</key>
 						<dict>

@@ -27,7 +27,7 @@ TODO
 -[x] autocomplete snippet files
 -[ ] autocomplete fragment ids from a snippet
 
--[ ] completion on variable transformations ie raw in ${myvar/raw}
+-[x] completion on variable transformations ie raw in ${myvar/raw}
 
 -[X] make sure Comment Line and Comment Start Block commands work
 -[ ] figure out how to set the default indenting to soft tabs of size 4
@@ -63,7 +63,6 @@ Variables can be used nearly anywhere
 ${website}
 %{urlencoded}
 ${srcdir/raw}
-${fred}
 # variables can have a default value, useful in snippets and fragments
 ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
@@ -75,6 +74,7 @@ var2 = * myscript.applescript
 var3 = $ myscript.sh ${var} "arg 2"
 # https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 var4 = ?[ First, Second, Third ] "Which ${some} one?"
+
 var5 = ?[
     First
     Second

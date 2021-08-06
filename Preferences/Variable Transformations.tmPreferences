@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Variable Transformations</string>
+	<key>scope</key>
+	<string>source.bunch variable.language.interpolation.right.bunch</string>
+	<key>settings</key>
+	<dict>
+		<key>completions</key>
+		<array>
+			<string>raw</string>
+			<string>shell</string>
+			<string>typed</string>
+			<string>url</string>
+		</array>
+		<key>disableDefaultCompletion</key>
+		<integer>1</integer>
+	</dict>
+	<key>uuid</key>
+	<string>BB6CC51F-4B89-4FA4-8391-DC5F489AB584</string>
+</dict>
+</plist>
