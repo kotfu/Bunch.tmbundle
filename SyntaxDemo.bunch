@@ -32,14 +32,21 @@ TODO
 -[X] make sure Comment Line and Comment Start Block commands work
 -[ ] figure out how to set the default indenting to soft tabs of size 4
 
--[ ] finish dialog snippet, how can I insert snippet stuff after the autoinserted closing bracket?
--[ ] add audio device completion using system_profiler SPAudioDataType -xml | xmllint --xpath
+-[ ] dialog snippet, how can I insert snippet stuff after the autoinserted closing bracket?
+-[ ] add audio device completion using
+     $ system_profiler SPAudioDataType -xml | xmllint --xpath '/plist/array/dict/array[2]/dict/array/dict/string[1]' - | sed -e 's|</string><string>|@|g' -e 's|<string>||g' -e 's|</string>||g' | tr '@' '\n' | sort | uniq
+
+	 look at ruby bundle, menu actions > declarations > New Method for how to
+	 dynamically build a snippet using a command
+-[ ] figure out how to do auto-indenting of arrays like Python and Ruby bundles do,
+     and apply it to query array's and query dictionaries
+     in Ruby, type '[', 'return' to see the desired behavior
 */
 
 /*
 https://bunchapp.co/docs/bunch-files/frontmatter/
 
-YAML-ish keys and values. Can contain commands and variable
+Simplified YAML-ish keys and values. Can contain commands and variable
 assignments
 */
 
