@@ -13,32 +13,35 @@ easier to edit Bunch files.
 
 This bundle includes:
 
-- Syntax highlighting for Bunch files
+- Syntax highlighting for Bunch files and Snippets
+- Completions for Bunch commands
+- Completion for any installed application name
+- Completion for frontmatter keys
 
 
 ## Installation
 
 - If you haven't already installed TextMate,
   [download](https://macromates.com/download) and install it
-- Click the Green "Code" button above, and then click on "Download ZIP"
-- After the file had downloaded, open Finder and find the downloaded file
-- You may have to double click the file to unzip it
-- Rename the `Bunch.tmbundle-main` directory to `Bunch.tmbundle`
-- Double-click the `Bunch.tmbundle` file to install it in TextMate
+- Download `Bunch.tmbundle.zip` from the [latest release](https://github.com/kotfu/Bunch.tmbundle/releases) on github
+- Double-click `Bunch.tmbundle.zip` to unzip the file
+- Double-cliek `Bunch.tmbundle` to install the bundle in TextMate
 
 TextMate won't automatically keep this bundle updated for you. Update the bundle
-by following the installation steps.
+by following the installation steps. Watch the
+[Bunch.tmbundle](https://github.com/kotfu/Bunch.tmbundle) repository on github
+to be notified of new releases.
 
-## Customize the Theme
 
-You can create your own customzed theme to be used for Bunch files. Here's a list
-of the syntax elements and the scope used for it in the language grammer. You can
-set or change the visual attributes of any scope in the grammer in your theme.
+## Screenshots
 
-- Commands = storage.type.function...
-- Apps, Files, and URLS = entity.name.function...
-- ! and @ operators = keyword.operator...
-- Comments = comment.line... and comment.block...
+Using the builtin Cobalt theme:
+
+![Bunch syntax screenshot in Cobalt theme](https://www.kotfu.net/software-scraps/bunch-tmbundle-dark-cobalt.png)
+
+Using the builtin Dawn theme:
+
+![Bunch syntax screenshot in Dawn theme](https://www.kotfu.net/software-scraps/bunch-tmbundle-light-dawn.png)
 
 
 ## For Bundle Developers
@@ -49,3 +52,7 @@ Reference material for customizing and creating bundles:
 * [Regex Reference](https://macromates.com/manual/en/regular_expressions)
 * [Bunch File Syntax Reference](https://bunchapp.co/docs/bunch-files/quick-reference/)
 * [TextMate Bundle Lessons Learned](https://www.apeth.com/nonblog/stories/textmatebundle.html)
+
+This repo also includes a `SyntaxDemo.bunch` file which shows all the syntax
+variations allowed in a real bunch file. The file helps with testing and
+validating modifications to the syntax highlighting included in this bundle.
