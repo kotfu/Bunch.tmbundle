@@ -7,7 +7,7 @@ open at: 10am
 frontvar: Some new value
 srcdir: ~/src/myproject
 varfromscript: $ echo thevalue
-website: close after:https://bunchapp.co
+web site: close after:https://bunchapp.co
 onoff: off
 somevar: 
 ---
@@ -69,7 +69,7 @@ passed in via the URL handler
 Variables can be used nearly anywhere
 */
 
-${website}
+${web site}
 %{urlencoded}
 ${srcdir/raw}
 # variables can have a default value, useful in snippets and fragments

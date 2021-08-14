@@ -1131,7 +1131,7 @@
 					<key>comment</key>
 					<string>variable references with their various incantations and transformations</string>
 					<key>match</key>
-					<string>([\$%]\{)(\w+)?(((/)(.*?))|((:)(.*)))?(\})</string>
+					<string>([\$%]\{)(.+?)(((/)(.*?))|((:)(.*)))?(\})</string>
 				</dict>
 			</array>
 		</dict>
