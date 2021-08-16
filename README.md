@@ -25,7 +25,7 @@ This bundle includes:
   [download](https://macromates.com/download) and install it
 - Download `Bunch.tmbundle.zip` from the [latest release](https://github.com/kotfu/Bunch.tmbundle/releases) on github
 - Double-click `Bunch.tmbundle.zip` to unzip the file
-- Double-cliek `Bunch.tmbundle` to install the bundle in TextMate
+- Double-click `Bunch.tmbundle` to install the bundle in TextMate
 
 TextMate won't automatically keep this bundle updated for you. Update the bundle
 by following the installation steps. Watch the
