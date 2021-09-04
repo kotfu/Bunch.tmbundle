@@ -1,6 +1,6 @@
 # Bunch.tmbundle
 
-A [TextMate](https://macromates.com/) bundle for
+A [TextMate](https://macromates.com/) bundle for editing files used with
 [Bunch.app](https://bunchapp.co) on macOS.
 
 Bunch is a Mac automation app that processes plain text files with the extension
@@ -13,7 +13,7 @@ easier to edit Bunch files.
 
 This bundle includes:
 
-- Syntax highlighting for Bunch files and Snippets
+- Syntax highlighting for Bunch files and snippets
 - Completions for Bunch commands
 - Completion for any installed application name
 - Completion for frontmatter keys
