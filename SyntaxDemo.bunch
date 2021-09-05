@@ -76,6 +76,7 @@ ${srcdir/raw}
 ${taskapp:OmniFocus}
 # variables can also be direct assigned outside of front matter
 var1 = some value
+var2 = this ${var1} value
 # https://bunchapp.co/docs/bunch-files/interactivity/populating-variables/
 global var2 = ?"What should var2 ${var1} contain"
 # variables can be assigned from a script
@@ -97,6 +98,25 @@ var7 = ?{
 # https://bunchapp.co/docs/bunch-files/interactivity/external-files/
 var8 = ?< scripts/Menu Source.json "Pick your ${thevar} Poison"
 var9 = ?<scripts/${somedir}/myfile.yaml
+# markdown syntax for multi-line variables
+var10 = ```
+        line one
+        all of this ${var} will be outdented
+        line three
+        ```
+# heredoc syntax for multi-line variables
+var10 = <<DUN
+        line one
+        all of this ${var} will be outdented
+        line three
+        DUN
+# variable set from contents of file, using snippet syntax
+var11 = <some.snippet
+var12 = <some.snippet#fragment
+## embedded snippet with no fragment name
+var13 = <<
+# embedded snippet with a fragment name
+var13 = <<# My fragment
 
 /*
 https://bunchapp.co/docs/bunch-files/apps/
@@ -318,6 +338,30 @@ $ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}
 
+# embedded applescript using markdown syntax
+* ```
+set source_folder to choose folder with prompt "Please select directory."
+-- do some cool stuff
+```
+# embedded applescript heredoc format
+* <<EOF
+set source_folder to choose folder with prompt "Please select directory."
+-- do some cool stuff
+EOF
+# embedded shell script using markdown syntax
+$ ```
+#!/bin/bash
+if [ $(whoami) = 'root' ]; then
+    say i am ${variable} groot
+fi
+```
+# embedded shell script using heredoc syntax
+$ <<EOF
+#!/bin/bash
+if [ $(whoami) = 'root' ]; then
+    say i am groot
+fi
+EOF
 
 /*
 https://bunchapp.co/docs/bunch-files/snippets/

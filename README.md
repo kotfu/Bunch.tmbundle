@@ -44,6 +44,19 @@ Using the builtin Dawn theme:
 ![Bunch syntax screenshot in Dawn theme](https://www.kotfu.net/software-scraps/bunch-tmbundle-light-dawn.png)
 
 
+## Warts
+
+The syntax highlighting in this bundle has a few warts, ie stuff that isn't
+ideal. If I was smarter, I could probably figure out how to fix or work around
+all of these. But for now, they remain in a less than ideal state.
+
+- The Bunch documentation says that variable placeholders work inside of
+  embedded shell scripts and applescripts. It would be great if I could syntax
+  highlight those variable placeholders, and also include the shell syntax
+  highlighting. I can only figure out how to do one or the other. So it
+  highlights shell syntax.
+
+
 ## For Bundle Developers
 
 Reference material for customizing and creating bundles:

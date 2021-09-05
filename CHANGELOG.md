@@ -5,8 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
 ## Unreleased
 
+### Added
+
+- syntax highlighting for variables assigned values from snippets, with or
+  without fragment names
+- syntax highlighting for multi-line variables using either markdown or
+  heredoc syntax
+- syntax highlighint for embedded shell or apple scripts using either markdown
+  or heredoc syntax
+
+### Fixed
+
+- interpolation aka placeholder highlighting in simple variables
 
 ## 1.0.0 (2021-08-13)
 
