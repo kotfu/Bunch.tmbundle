@@ -337,7 +337,6 @@ $ cd ~/Sites/bunch && jekyll serve (display d:1 100%x300 left,top #333 #b0d17d a
 # shell script with a variable as an argument and an environment variable
 $ /usr/local/scripts/myscript.sh ${srcdir} arg2
 - ENV_VAR=with variable interpolation ${variable1}
-
 # embedded applescript using markdown syntax
 * ```
 set source_folder to choose folder with prompt "Please select directory."
@@ -362,6 +361,21 @@ if [ $(whoami) = 'root' ]; then
     say i am groot
 fi
 EOF
+# embedded apple script using markdown syntax
+* ```
+tell application "System Preferences"
+	activate
+	set the current pane to pane id "com.apple.preference.sound"
+end tell
+```
+# embedded apple script using heredoc syntax
+* <<OMEGA
+tell application "Drafts" to make new draft with properties {content:the clipboard}
+OMEGA
+# scripts can also be imported from snippets
+$ <myscripts.sh#This Script
+* <<#Embedded AppleScript
+
 
 /*
 https://bunchapp.co/docs/bunch-files/snippets/

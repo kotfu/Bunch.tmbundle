@@ -14,8 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   without fragment names
 - syntax highlighting for multi-line variables using either markdown or
   heredoc syntax
-- syntax highlighint for embedded shell or apple scripts using either markdown
+- syntax highlighing for embedded shell or apple scripts using either markdown
   or heredoc syntax
+- syntax highlighting for scripts imported from snippets
 
 ### Fixed
 
