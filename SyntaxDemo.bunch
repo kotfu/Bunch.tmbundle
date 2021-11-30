@@ -123,7 +123,7 @@ https://bunchapp.co/docs/bunch-files/apps/
 
 Apps and files
 */
-(audio  device_name|volume X|mute|unmute
+
 # hide all visible apps (use at top of bunch)
 @@
 
@@ -227,7 +227,16 @@ if self is opening
 		Third
 	] "Which one?"
 end
-
+if self is closing
+end
+if Comms is opening
+end
+if uuid is not 43F96162-AA78-4FEF-B142-407ADC2B3154
+end
+if file ~/.bash_profile does not exist
+    iTerm2
+end
+ 
 /*
 https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 
@@ -297,6 +306,7 @@ https://bunchapp.co/docs/bunch-files/commands/
 
 Commands are enclosed in parenthesis and can have variables
 */
+(audio  device_name|volume X|mute|unmute)
 (hide desktop)
 # pipe to request parallel execution
 |(${showhide} desktop)
