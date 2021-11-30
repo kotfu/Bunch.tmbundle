@@ -8,11 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 1.2.0
 
+Add syntax highlighting for new features in Bunch 1.4.6
+
 ### Added
 
 - syntax highlighting for uuid conditionals
 - syntax highlighting for file conditionals (exists, contains, etc.)
-
+- syntax highlighting for ignore if/unless and title prefix frontmatter
 
 ## 1.1.0 (2021-10-18)
 

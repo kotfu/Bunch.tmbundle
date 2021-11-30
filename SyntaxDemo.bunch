@@ -3,6 +3,7 @@
 title: Documentation
 shortcut: d
 open at: 10am
+title prefix: 📱
 # all other keys assign variables
 frontvar: Some new value
 srcdir: ~/src/myproject
