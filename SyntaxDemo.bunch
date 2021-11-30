@@ -236,7 +236,10 @@ end
 if file ~/.bash_profile does not exist
     iTerm2
 end
- 
+if file ~/.bash_profile contains "something else"
+    iTerm2
+end
+
 /*
 https://bunchapp.co/docs/bunch-files/interactivity/multiple-choice/
 

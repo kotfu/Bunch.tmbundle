@@ -522,7 +522,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b((not )?(has|is)?\s*(not|!)?\s*(parent|child|uuid)|(not )?(is|does)( not)?( (running|before|after|open(ing)?|clos(ing|ed)))?|(not|!)|(starts?|begins?|ends?) with|contains?|(less|greater)( than)?( or equals?( to)?)?|equals?( to)?|[!\^\$\*&lt;=&gt;]+|(yes|no|true|false))\b</string>
+					<string>\b((not )?(has|is)?\s*(not|!)?\s*(parent|child|uuid|file)|(not )?(is|does)( not)?( (running|before|after|open(ing)?|clos(ing|ed)))?|(not|!)|(starts?|begins?|ends?) with|contains?|exists?|(less|greater)( than)?( or equals?( to)?)?|equals?( to)?|[!\^\$\*&lt;=&gt;]+|(yes|no|true|false))\b</string>
 					<key>name</key>
 					<string>keyword.operator.word.bunch</string>
 				</dict>
