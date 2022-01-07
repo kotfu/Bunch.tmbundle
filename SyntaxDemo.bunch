@@ -3,7 +3,10 @@
 title: Documentation
 shortcut: d
 open at: 10am
+schedule if: E1FD327A-E6D6-556D-984F-9E927EC53BEF
 title prefix: 📱
+ignore: true
+ignore if:
 # all other keys assign variables
 frontvar: Some new value
 srcdir: ~/src/myproject
@@ -11,6 +14,7 @@ varfromscript: $ echo thevalue
 web site: close after:https://bunchapp.co
 onoff: off
 somevar: 
+
 ---
 /*
 TODO

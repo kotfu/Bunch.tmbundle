@@ -1180,7 +1180,7 @@
 											<key>comment</key>
 											<string>certain keywords cause bunch to take actions, instead of defining a variable</string>
 											<key>match</key>
-											<string>(close after|close at|close on|from file|from script|ignore if|ignore unless|ignores state|menu divider|menu order|only opens|open at|open every|open on|quits apps|run after|run after close|run before|run before close|schedule if|schedule unless|sequence|shortcut|single bunch mode|startup|title prefix|title|toggles)</string>
+											<string>(close after|close at|close on|from file|from script|ignore if|ignore unless|ignore|ignores state|menu divider|menu order|only opens|open at|open every|open on|quits apps|run after|run after close|run before|run before close|schedule if|schedule unless|sequence|shortcut|single bunch mode|startup|tags|title prefix|title|toggles)</string>
 											<key>name</key>
 											<string>storage.type.function</string>
 										</dict>
